@@ -13,11 +13,11 @@ class Qualifier():
         return f'{self.name} {f"({self.effect})" if self.effect else ""}'
 
 
-STRONG = Qualifier('strong', '+2 strength')
-FAST = Qualifier('fast', '+2 speed')
-SHARP = Qualifier('sharp', '+2 precision')
-SMART = Qualifier('smart', '+2 mental')
-LUCKY = Qualifier('lucky', '+1 luck token')
+QUALIFIER_STRONG = Qualifier('strong', '+2 strength')
+QUALIFIER_FAST = Qualifier('fast', '+2 speed')
+QUALIFIER_SHARP = Qualifier('sharp', '+2 precision')
+QUALIFIER_SMART = Qualifier('smart', '+2 mental')
+QUALIFIER_LUCKY = Qualifier('lucky', '+1 luck token')
 
 
 class Player(Creature):
@@ -122,10 +122,10 @@ class Player(Creature):
     @qualifier.setter
     def qualifier(self, value: Optional[Qualifier]) -> None:
         corresponding_stat = {
-            STRONG: self.strength,
-            FAST: self.speed,
-            SHARP: self.precision,
-            SMART: self.mental
+            QUALIFIER_STRONG: self.strength,
+            QUALIFIER_FAST: self.speed,
+            QUALIFIER_SHARP: self.precision,
+            QUALIFIER_SMART: self.mental
         }
         if self._qualifier is not None and \
            self._qualifier in corresponding_stat.keys():
