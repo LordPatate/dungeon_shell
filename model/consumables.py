@@ -3,6 +3,7 @@ from typing import Dict, List
 
 from creature import Creature
 from model.npc import NPC
+from model.player import MAGIC_TYPES
 from player import Player
 
 
@@ -12,7 +13,7 @@ class Consumable:
 
     def __str__(self) -> str:
         raise NotImplementedError()
-    
+
     def use(self) -> None:
         if self.depleted:
             raise Exception('This item is depleted and cannot be used.')
@@ -36,11 +37,9 @@ class Potion(Consumable):
     def __str__(self) -> str:
         stat = self.kind.name
         return f'{stat.capitalize()} potion (restores up to {Potion.HEAL_AMOUNT} {stat})'
-    
-    def use(self, target: Creature = None) -> None:
+
+    def use(self, target: Creature) -> None:
         super().use()
-        if target is None:
-            raise ValueError("'target' argument required for potions")
         if isinstance(target, Player):
             target.__dict__[self.kind.name.lower()] += Potion.HEAL_AMOUNT
         else:
@@ -70,6 +69,17 @@ class Bomb(Consumable):
         return '{kind} bomb: {effect}'.format(**self.__dict__)
 
 
+class Scroll(Consumable):
+    POWER_LEVEL = 4
+
+    def __init__(self, magic_type: str) -> None:
+        self.magic_type = magic_type
+
+    def __str__(self) -> str:
+        return f'{self.magic_type} scroll: \
+            {MAGIC_TYPES[self.magic_type].replace("X", str(Scroll.POWER_LEVEL))}'
+
+
 class SummonningStone(Consumable):
     STANDARD_CREATURES: List[NPC] = [
         NPC('fairy', level=1, damage=0, abilities='heal (2)'),
@@ -79,6 +89,7 @@ class SummonningStone(Consumable):
         NPC('undead knight', level=5, health=12, armor=3),
         NPC('golem', level=6, health=10, armor=10),
     ]
+
     def __init__(self, creature: NPC):
         self.creature = creature
 
