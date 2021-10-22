@@ -1,10 +1,18 @@
 class Stat:
     def __init__(self, max: int) -> None:
         self.max: int = max
-        self.cur: int = max
+        self._cur: int = max
 
     def __str__(self) -> str:
         return '{cur}/{max}'.format(**self.__dict__)
+
+    @property
+    def cur(self) -> int:
+        return self._cur
+
+    @cur.setter
+    def cur(self, value: int) -> None:
+        self._cur = max(0, min(self.max, value))
 
 
 class Creature:
@@ -18,10 +26,8 @@ class Creature:
         health = self.get_health()
         armor = self.get_armor()
         damage = max(0, damage - armor)
-        health.cur = max(0, health.cur - damage)
+        health.cur -= damage
 
     def heal(self, amount: int):
         health = self.get_health()
-        health.cur = min(
-            health.max,
-            health.cur + amount)
+        health.cur += amount
