@@ -38,8 +38,10 @@ class Potion(Consumable):
         stat = self.kind.name
         return f'{stat.capitalize()} potion (restores up to {Potion.HEAL_AMOUNT} {stat})'
 
-    def use(self, target: Creature) -> None:
+    def use(self, target: Creature = None) -> None:
         super().use()
+        if target is None:
+            raise ValueError("'target' argument required for potions")
         if isinstance(target, Player):
             target.__dict__[self.kind.name.lower()] += Potion.HEAL_AMOUNT
         else:
