@@ -51,12 +51,13 @@ class Player:
 
     def hurt(self, damage: int) -> None:
         if self.equipment is not None:
-            damage -= self.equipment.armor
-        total = self.strength.cur - damage
-        self.strength.cur = max(0, total)
+            damage = max(0, damage - self.equipment.armor)
+        self.strength.cur = max(0, self.strength.cur - damage)
 
     def heal(self, amount: int) -> None:
-        total = self.strength.cur + amount
-        self.strength.cur = min(self.strength.max, total)
+        self.strength.cur = min(
+            self.strength.max,
+            self.strength.cur + amount
+        )
 
 
