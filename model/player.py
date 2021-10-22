@@ -1,18 +1,10 @@
 from typing import Dict, List
 
-from model.equipment import Weapon, Equipment
+from model.creature import Creature, Stat
+from model.equipment import Equipment, Weapon
 
 
-class Stat:
-    def __init__(self, max: int) -> None:
-        self.max: int = max
-        self.cur: int = max
-
-    def __str__(self) -> str:
-        return '{cur}/{max}'.format(**self.__dict__)
-
-
-class Player:
+class Player(Creature):
     def __init__(self,
                  name:      str,
                  strength:  int,
@@ -49,15 +41,14 @@ class Player:
         ============
         '''  # noqa E999
 
-    def hurt(self, damage: int) -> None:
+    def get_health(self) -> Stat:
+        return self.strength
+
+    def get_armor(self) -> int:
+        total = 0
         if self.equipment is not None:
-            damage = max(0, damage - self.equipment.armor)
-        self.strength.cur = max(0, self.strength.cur - damage)
+            total += self.equipment.armor
+        for piece in self.props:
+            total += piece.armor
 
-    def heal(self, amount: int) -> None:
-        self.strength.cur = min(
-            self.strength.max,
-            self.strength.cur + amount
-        )
-
-
+        return total
