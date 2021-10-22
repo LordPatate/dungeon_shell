@@ -1,6 +1,6 @@
 class Stat:
     def __init__(self, max: int) -> None:
-        self.max: int = max
+        self._max: int = max
         self._cur: int = max
 
     def __str__(self) -> str:
@@ -12,7 +12,21 @@ class Stat:
 
     @cur.setter
     def cur(self, value: int) -> None:
-        self._cur = max(0, min(self.max, value))
+        self._cur = max(0, min(self._max, value))
+    
+    @property
+    def max(self) -> int:
+        return self._max
+    
+    @max.setter
+    def max(self, value: int) -> None:
+        if value > self._max:
+            self._cur += (value - self._max)
+        elif value < self._cur:
+            self._cur = value
+        
+        self._max = max(0, value)
+        
 
 
 class Creature:
