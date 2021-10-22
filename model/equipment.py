@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 
 class Weapon:
@@ -36,7 +36,7 @@ class Equipment:
         self.prop: bool = prop
         self.armor: int = armor
         self.capacity: int = capacity
-        self.abilities: str = abilities
+        self.abilities: Optional[str] = abilities
 
     def __str__(self) -> str:
         description: List[str] = [

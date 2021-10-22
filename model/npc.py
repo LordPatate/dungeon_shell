@@ -1,3 +1,4 @@
+from typing import Optional
 from model.creature import Stat, Creature
 
 
@@ -15,7 +16,7 @@ class NPC(Creature):
         self.damage: int = level if damage == -1 else damage
         self.health: Stat = Stat(level * 3) if health is None else health
         self.armor: int = armor
-        self.abilities: str = abilities
+        self.abilities: Optional[str] = abilities
 
     def __str__(self) -> str:
         summary = '[{level}] {name}: {health}'.format(**self.__dict__)

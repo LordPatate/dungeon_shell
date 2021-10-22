@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import List, Optional
 
 from model.creature import Creature, Stat
 from model.equipment import Equipment, Weapon
@@ -14,12 +14,15 @@ class Player(Creature):
                  ) -> None:
         self.name: str = name
 
+        self.expertise: Optional[str] = None
+        self.signature: Optional[str] = None
+
         self.strength:  Stat = Stat(strength)
         self.speed:     Stat = Stat(speed)
         self.precision: Stat = Stat(precision)
         self.mental:    Stat = Stat(mental)
 
-        self.weapons: Dict[Weapon] = {}
+        self.weapons: List[Weapon] = []
         self.equipment: Equipment = None
         self.props: List[Equipment] = []
 
@@ -30,16 +33,21 @@ class Player(Creature):
     def details(self) -> str:
         return f'''
         === {self.name} ===
+        {f"""Expertise: {self.expertise}
+        ------------""" if self.expertise else ''}
         Strength:  {self.strength}
         Speed:     {self.speed}
         Precision: {self.precision}
         Mental:    {self.mental}
         ------------
-        Wields: {',\n'.join(self.weapons)}
-        Wears: {self.equipment}
-        {',\n'.join(self.props) if self.props else ''}
+        Wields: {""",
+        """.join(self.weapons)}
+        Wears: {self.equipment if self.equipment else "nothing"}
+        {""",
+        """.join(self.props) if self.props else ''}
+        {f"Signature move: {self.signature}" if self.signature else ''}
         ============
-        '''  # noqa E999
+        '''
 
     def get_health(self) -> Stat:
         return self.strength
