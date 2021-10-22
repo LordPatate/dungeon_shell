@@ -13,20 +13,19 @@ class Stat:
     @cur.setter
     def cur(self, value: int) -> None:
         self._cur = max(0, min(self._max, value))
-    
+
     @property
     def max(self) -> int:
         return self._max
-    
+
     @max.setter
     def max(self, value: int) -> None:
         if value > self._max:
             self._cur += (value - self._max)
         elif value < self._cur:
             self._cur = value
-        
+
         self._max = max(0, value)
-        
 
 
 class Creature:
