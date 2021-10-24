@@ -1,3 +1,6 @@
+from typing import Callable, List
+
+
 class Stat:
     def __init__(self, max: int) -> None:
         self._max: int = max
@@ -29,18 +32,30 @@ class Stat:
 
 
 class Creature:
-    def get_health(self) -> Stat:
-        raise NotImplementedError()
-
-    def get_armor(self) -> int:
-        raise NotImplementedError()
+    def __init__(self):
+        self._on_death_listeners: List[Callable] = []
 
     def hurt(self, damage: int):
         health = self.get_health()
         armor = self.get_armor()
         damage = max(0, damage - armor)
         health.cur -= damage
+        if health.cur == 0:
+            self.die()
+
+    def die(self):
+        for listener in self._on_death_listeners:
+            listener()
 
     def heal(self, amount: int):
         health = self.get_health()
         health.cur += amount
+
+    def add_on_death_listener(self, listener: Callable) -> None:
+        self._on_death_listeners.append(listener)
+
+    def get_health(self) -> Stat:
+        raise NotImplementedError()
+
+    def get_armor(self) -> int:
+        raise NotImplementedError()
