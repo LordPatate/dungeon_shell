@@ -40,7 +40,7 @@ class Player(Creature):
                  mental:    int
                  ) -> None:
         super().__init__()
-        
+
         self.name: str = name
 
         self.strength:  Stat = Stat(strength)
