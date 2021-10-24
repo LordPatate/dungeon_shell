@@ -17,6 +17,9 @@ class Consumable:
     def use(self) -> None:
         if self.depleted:
             raise Exception('This item is depleted and cannot be used.')
+        self.depletes()
+
+    def depletes(self):
         self.depleted = True
 
 
@@ -94,6 +97,7 @@ class SummonningStone(Consumable):
 
     def __init__(self, creature: NPC):
         self.creature = creature
+        self.creature.add_on_death_listener(self.depletes)
 
     def __str__(self) -> str:
         return f'summons: {self.creature}'
