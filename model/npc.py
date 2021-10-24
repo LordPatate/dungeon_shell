@@ -11,6 +11,7 @@ class NPC(Creature):
                  armor: int = 0,
                  abilities: str = None
                  ) -> None:
+        super().__init__()
         self.name: str = name
         self.level: int = level
         self.damage: int = level if damage == -1 else damage

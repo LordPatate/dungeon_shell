@@ -39,6 +39,8 @@ class Player(Creature):
                  precision: int,
                  mental:    int
                  ) -> None:
+        super().__init__()
+        
         self.name: str = name
 
         self.strength:  Stat = Stat(strength)
