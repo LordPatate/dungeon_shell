@@ -2,9 +2,8 @@ from enum import Enum, auto
 from typing import Dict, List
 
 from creature import Creature
-from model.npc import NPC
-from model.player import MAGIC_TYPES
-from player import Player
+from npc import NPC
+from player import MAGIC_TYPES, Player
 
 
 class Consumable:

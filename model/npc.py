@@ -43,6 +43,7 @@ class NPC(Creature):
 
 
 class NPCFactory:
+    @staticmethod
     def from_json(src: str) -> NPC:
         obj = json.loads(src)
         return NPC(**obj)
