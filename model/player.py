@@ -1,3 +1,4 @@
+import json
 from typing import Dict, List, Optional, Union
 
 from creature import Creature, Stat
@@ -19,16 +20,8 @@ QUALIFIER_SHARP = Qualifier('sharp', '+2 precision')
 QUALIFIER_SMART = Qualifier('smart', '+2 mental')
 QUALIFIER_LUCKY = Qualifier('lucky', '+1 luck token')
 
-MAGIC_TYPES: Dict[str, str] = {
-    'raw': 'deals X damages to a target',
-    'heal': 'restores 2*X strength to a target',
-    'fire': 'burns a target dealing X/2 damage for 3 turns',
-    'frost': 'freezes a target of level lower or equal to X',
-    'wind': 'knocks back all targets of level lower or equal to X',
-    'lightning': 'deals 2*X damage to the nearest target',
-    'force field': 'barrier that absorbs up to 2*X damage',
-    'telekinesis': 'move around freely a target of level lower or equal to X/2',
-}
+with open('../resources/magic.json') as f:
+    MAGIC_TYPES: Dict[str, str] = json.load(f)
 
 
 class Player(Creature):
