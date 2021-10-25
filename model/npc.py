@@ -40,3 +40,9 @@ class NPC(Creature):
 
     def get_armor(self) -> int:
         return self.armor
+
+
+class NPCFactory:
+    def from_json(src: str) -> NPC:
+        obj = json.loads(src)
+        return NPC(**obj)
