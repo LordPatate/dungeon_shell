@@ -1,7 +1,7 @@
 from typing import Dict, List, Optional, Union
 
-from model.creature import Creature, Stat
-from model.equipment import Equipment, Weapon
+from creature import Creature, Stat
+from equipment import Equipment, Weapon
 
 
 class Qualifier():
@@ -58,7 +58,7 @@ class Player(Creature):
         self.props: List[Equipment] = []
 
     def __str__(self) -> str:
-        return '{name} ({strength}•{speed}•{precision}•{mental})'\
+        return '{name} ({strength} • {speed} • {precision} • {mental})'\
             .format(**self.__dict__)
 
     def details(self) -> str:
@@ -72,11 +72,13 @@ class Player(Creature):
         Precision: {self.precision}
         Mental:    {self.mental}
         ------------
-        Wields: {""",
-        """.join(self.weapons)}
+        Wields: {"""
+          • """ + """;
+          • """.join(map(str, self.weapons)) if self.weapons else "nothing"}
         Wears: {self.equipment if self.equipment else 'nothing'}
-        {""",
-        """.join(self.props) if self.props else ''}
+        Props: {"""
+          • """ + """;
+          • """.join(map(str, self.props)) if self.props else 'none'}
         {f'Signature move: {self.signature}' if self.signature else ''}
         ============
         '''
