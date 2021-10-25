@@ -1,3 +1,4 @@
+import json
 from typing import List, Optional, Union
 
 
@@ -59,3 +60,15 @@ class Equipment:
             description.append(self.abilities)
 
         return ', '.join(description)
+
+
+class EquipmentFactory:
+    @staticmethod
+    def weapon_from_json(src: str) -> Weapon:
+        obj = json.loads(src)
+        return Weapon(**obj)
+
+    @staticmethod
+    def equipment_from_json(src: str) -> Equipment:
+        obj = json.loads(src)
+        return Equipment(**obj)

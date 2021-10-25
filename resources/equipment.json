@@ -1,0 +1,13 @@
+{
+    "weapons": [
+        {"name":"shield", "damage":0, "abilities":"blocks 4 damage, +3 to blocking rolls"},
+        {"name":"sword", "damage":4},
+        {"name":"bow", "damage":4, "two_handed":true}
+    ],
+    "equipment": [
+        {"name":"backpack", "capacity":5},
+        {"name":"cape", "abilities":"+3 to stealth rolls"},
+        {"name":"leather jerkin", "armor":1},
+        {"name":"chainmail", "armor":2}
+    ]
+}
