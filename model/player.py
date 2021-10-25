@@ -133,6 +133,9 @@ class Player(Creature):
 
         return total
 
+    def get_stat(self, name: str) -> Stat:
+        return self.__dict__[name]
+
     @property
     def qualifier(self) -> Optional[Qualifier]:
         return self._qualifier
