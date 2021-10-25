@@ -1,7 +1,0 @@
-<npc name='wolf' level=1 />
-<npc name='goblin' level=2 damage=4 health=4 />
-<npc name='human' level=3 />
-<npc name='bear' level=4 damage=3 armor=1 />
-<npc name='knight' level=5 health=12 armor=3 />
-<npc name='werewolf' level=6 damage=4 abilities='attack twice per turn' />
-<npc name='vampire' level=7 damage=6 health=18 abilities='teleportation, life drain, bat swarm summonning' />
