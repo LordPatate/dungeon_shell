@@ -1,8 +1,17 @@
 {
-    "weapons": [
-        {"name":"shield", "damage":0, "abilities":"blocks 4 damage, +3 to blocking rolls"},
+    "starting weapons": [
+        {"name":"shield", "damage":0, "abilities":"blocks 4 damage, +3 to deflect rolls"},
         {"name":"sword", "damage":4},
-        {"name":"bow", "damage":4, "two_handed":true}
+        {"name":"club", "damage":5, "critical":"stun"},
+        {"name":"dagger", "damage":3, "abilities":"can be used once in addition to your normal action each turn"},
+        {"name":"axe", "damage":6, "critical":"chop limb"},
+        {"name":"spear", "damage":4, "abilities":"you can attack while defending in melee"},
+        {"name":"quarterstaff", "damage":5, "two_handed":true, "critical":"gain one extra action", "abilities":"+3 to deflect rolls"},
+        {"name":"bow", "damage":4, "two_handed":true},
+        {"name":"crossbow", "damage":6, "two_handed":true, "abilities":"can only be used once every two turns"},
+        {"name":"light crossbow", "damage":5, "abilities":"can only be used once every two turns"},
+        {"name":"wand", "damage":0, "abilities":"spells cost 2 less"},
+        {"name":"grimoire", "damage":0, "abilities":"spells success is determined by your maximum of Mental"}
     ],
     "equipment": [
         {"name":"backpack", "capacity":5},
