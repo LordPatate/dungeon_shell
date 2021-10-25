@@ -1,5 +1,7 @@
-from typing import Optional
-from model.creature import Stat, Creature
+import json
+from typing import Optional, Union
+
+from creature import Creature, Stat
 
 
 class NPC(Creature):
@@ -7,7 +9,7 @@ class NPC(Creature):
                  name: str,
                  level: int,
                  damage: int = -1,
-                 health: Stat = None,
+                 health: Union[Stat, int] = None,
                  armor: int = 0,
                  abilities: str = None
                  ) -> None:
@@ -15,6 +17,8 @@ class NPC(Creature):
         self.name: str = name
         self.level: int = level
         self.damage: int = level if damage == -1 else damage
+        if isinstance(health, int):
+            health = Stat(health)
         self.health: Stat = Stat(level * 3) if health is None else health
         self.armor: int = armor
         self.abilities: Optional[str] = abilities
