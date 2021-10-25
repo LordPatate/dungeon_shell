@@ -1,7 +1,9 @@
+import json
 from enum import Enum, auto
 from typing import Dict, List
 
 from creature import Creature
+from model.npc import NPCFactory
 from npc import NPC
 from player import MAGIC_TYPES, Player
 
@@ -23,6 +25,7 @@ class Consumable:
 
 
 class PotionType(Enum):
+    SPECIAL = 0
     STRENGTH = auto()
     SPEED = auto()
     PRECISION = auto()
@@ -32,39 +35,35 @@ class PotionType(Enum):
 class Potion(Consumable):
     HEAL_AMOUNT = 6
 
-    def __init__(self, kind: PotionType):
+    def __init__(self, kind: PotionType, effect: str = None):
         super().__init__()
+        if kind is PotionType.SPECIAL:
+            if effect is None:
+                raise ValueError(f'You must specify an effect for {PotionType.SPECIAL.name} potions.')
+        else:
+            if effect is not None:
+                raise ValueError(f'Only {PotionType.SPECIAL.name} potions can have an effect.')
         self.kind = kind
+        self.effect = effect
 
     def __str__(self) -> str:
-        stat = self.kind.name
-        return f'{stat.capitalize()} potion (restores up to {Potion.HEAL_AMOUNT} {stat})'
+        name = self.kind.name
+        if self.kind is PotionType.SPECIAL:
+            return f'{name.capitalize()} potion: {self.effect}'
+        else:
+            return f'{name.capitalize()} potion (restores up to {Potion.HEAL_AMOUNT} {name})'
 
     def use(self, target: Creature = None) -> None:
         super().use()
         if target is None:
             raise ValueError("'target' argument required for potions")
         if isinstance(target, Player):
-            target.__dict__[self.kind.name.lower()] += Potion.HEAL_AMOUNT
+            target.get_stat(self.kind.name.lower()).cur += Potion.HEAL_AMOUNT
         else:
             target.heal(Potion.HEAL_AMOUNT)
 
 
 class Bomb(Consumable):
-    STANDARD_KINDS: Dict[str, str] = {
-        'classic': 'explodes dealing 8 damage at point of impact '
-                   'and 4 in a small area ; causes minor destruction',
-        'shrapnel': 'shatter into plenty of small sharp pieces of glass and metal, '
-                    'dealing 6 damage to all creatures in a large radius',
-        'smoke': 'produce a thick smoke screen big enough to fill a small room',
-        'flash': 'emits a flash of brilliant light, '
-                 'blinding for several seconds anyone looking at it',
-        'poison': 'liberates a toxic cloud gas that dissipates quickly, '
-                  'poisoning all creatures in a large radius',
-        'flame': 'spill ignated flammable oil all targets within a small radius, '
-                 'dealing them 4 damage each turn',
-    }
-
     def __init__(self, kind: str, effect: str):
         super().__init__()
         self.kind = kind
@@ -87,15 +86,6 @@ class Scroll(Consumable):
 
 
 class SummonningStone(Consumable):
-    STANDARD_CREATURES: List[NPC] = [
-        NPC('fairy', level=1, damage=0, abilities='heal (2)'),
-        NPC('imp', level=2, damage=5, health=3),
-        NPC('phoenix', level=3),
-        NPC('elemental', level=4),
-        NPC('undead knight', level=5, health=12, armor=3),
-        NPC('golem', level=6, health=10, armor=10),
-    ]
-
     def __init__(self, creature: NPC):
         super().__init__()
         self.creature = creature
@@ -107,3 +97,20 @@ class SummonningStone(Consumable):
     def use(self) -> None:
         if self.depleted:
             raise Exception(f"This stone's {self.creature.name} is dead and cannot be summoned again.")
+
+
+class ConsumableFactory:
+    @staticmethod
+    def potion_from_json(src: str) -> Potion:
+        obj = json.loads(src)
+        return Potion(PotionType.SPECIAL, obj["effect"])
+
+    @staticmethod
+    def bomb_from_json(src: str) -> Bomb:
+        obj = json.loads(src)
+        return Bomb(**obj)
+
+    @staticmethod
+    def summoning_stone_from_json(src: str) -> SummonningStone:
+        obj = json.loads(src)
+        return SummonningStone(NPCFactory.from_json(**obj))
