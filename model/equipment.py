@@ -6,7 +6,7 @@ class Weapon:
                  name: str,
                  damage: int,
                  two_handed: bool = False,
-                 critical: str = None,
+                 critical: Union[str, int] = None,
                  abilities: str = None
                  ) -> None:
         self.name = name
