@@ -66,6 +66,7 @@ class Bomb(Consumable):
     }
 
     def __init__(self, kind: str, effect: str):
+        super().__init__()
         self.kind = kind
         self.effect = effect
 
@@ -77,6 +78,7 @@ class Scroll(Consumable):
     POWER_LEVEL = 4
 
     def __init__(self, magic_type: str) -> None:
+        super().__init__()
         self.magic_type = magic_type
 
     def __str__(self) -> str:
@@ -95,6 +97,7 @@ class SummonningStone(Consumable):
     ]
 
     def __init__(self, creature: NPC):
+        super().__init__()
         self.creature = creature
         self.creature.add_on_death_listener(self.depletes)
 
