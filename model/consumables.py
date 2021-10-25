@@ -1,6 +1,5 @@
 import json
 from enum import Enum, auto
-from typing import Dict, List
 
 from creature import Creature
 from model.npc import NPCFactory
