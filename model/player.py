@@ -90,21 +90,24 @@ class Player(Creature):
         self.weapons.append(weapon)
 
     def unequip(self, weapon: Union[Weapon, int, str]) -> Optional[Weapon]:
+        removed_weapon = None
         if isinstance(weapon, Weapon):
             if weapon not in self.weapons:
                 raise Exception('This player is not wielding this weapon.')
             self.weapons.remove(weapon)
+            removed_weapon = weapon
         elif isinstance(weapon, int):
-            return self.weapons.pop(weapon)
+            removed_weapon = self.weapons.pop(weapon)
         elif isinstance(weapon, str):
             for item in self.weapons:
                 if item.name is weapon:
                     self.weapons.remove(item)
-                    return item
+                    removed_weapon = item
             raise Exception('This player is not wielding any weapon with'
                             'that name.')
 
-        return None
+        self._free_hands += 2 if removed_weapon.two_handed else 1
+        return removed_weapon
 
     def wear(self, equipment: Optional[Equipment]) -> Optional[Equipment]:
         if equipment is not None and equipment.is_prop:
