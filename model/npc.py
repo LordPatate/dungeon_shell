@@ -3,6 +3,8 @@ from typing import Optional, Union
 
 from creature import Creature, Stat
 
+BESTIARY_FILENAME = "resources/bestiary.json"
+
 
 class NPC(Creature):
     def __init__(self,
@@ -47,3 +49,14 @@ class NPCFactory:
     def from_json(src: str) -> NPC:
         obj = json.loads(src)
         return NPC(**obj)
+
+    @staticmethod
+    def monster(name: str) -> NPC:
+        with open(BESTIARY_FILENAME) as f:
+            root = json.load(f)
+
+        for monster in root['monsters']:
+            if monster['name'] == name:
+                return NPC(**monster)
+
+        raise ValueError(f'No monster named {name} in bestiary.')
