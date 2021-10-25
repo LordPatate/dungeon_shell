@@ -7,7 +7,7 @@ class Stat:
         self._cur: int = max
 
     def __str__(self) -> str:
-        return '{cur}/{max}'.format(**self.__dict__)
+        return f'{self.cur}/{self.max}'
 
     @property
     def cur(self) -> int:
