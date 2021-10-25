@@ -1,7 +1,16 @@
-{"name":"wolf", "level":1 }
-{"name":"goblin", "level":2, "damage":4, "health":4}
-{"name":"human", "level":3}
-{"name":"bear", "level":4, "damage":3, "armor":1}
-{"name":"knight", "level":5, "health":12, "armor":3}
-{"name":"werewolf", "level":6, "damage":4, "abilities":"attack twice per turn"}
-{"name":"vampire", "level":7, "damage":6, "health":18, "abilities":"teleportation, life drain, bat swarm summonning"}
+{
+    "monsters": [
+        {"name":"wolf", "level":1 },
+        {"name":"goblin", "level":2, "damage":4, "health":4},
+        {"name":"goblin warlock", "level":3, "damage":5, "health": 7, "abilities":"ranged attacks, nearby goblins deal more damage"},
+        {"name":"bear", "level":4, "damage":3, "armor":1},
+        
+        {"name":"werewolf", "level":6, "damage":4, "abilities":"attack twice per turn"},
+        {"name":"vampire", "level":7, "damage":6, "health":18, "abilities":"teleportation, life drain, bat swarm summonning"}
+    ],
+    "humans": [
+        {"name":"bandit", "level":3},
+        {"name":"archer", "level":4, "damage":6, "health":10},
+        {"name":"knight", "level":5, "health":12, "armor":3}
+    ]
+}
