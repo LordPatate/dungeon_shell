@@ -49,6 +49,8 @@ class Creature:
 
     def heal(self, amount: int):
         health = self.get_health()
+        if health.cur == 0:
+            raise Exception('Cannot heal a dead creature')
         health.cur += amount
 
     def add_on_death_listener(self, listener: Callable) -> None:
