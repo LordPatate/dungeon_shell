@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import List, Optional, Union
 
 
 class Weapon:
@@ -17,9 +17,12 @@ class Weapon:
 
     def __str__(self) -> str:
         description: List[str] = [
-            self.name,
-            f'{self.damage} damage (critical: {self.critical})'
+            self.name
         ]
+        if self.damage != 0:
+            description.append(f'{self.damage} damage')
+        if self.critical != 0:
+            description.append(f' (critical: {self.critical})')
         if self.abilities is not None:
             description.append(self.abilities)
 
