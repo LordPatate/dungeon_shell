@@ -24,7 +24,9 @@ class NPC(Creature):
         self.abilities: Optional[str] = abilities
 
     def __str__(self) -> str:
-        summary = '[{level}] {name}: {health}'.format(**self.__dict__)
+        if self.health.cur == 0:
+            return f'[{self.level}] {self.name}: DEAD'
+        summary = f'[{self.level}] {self.name}: {self.health}'
         details = []
         if self.damage != self.level:
             details.append(f'{self.damage} damage')
