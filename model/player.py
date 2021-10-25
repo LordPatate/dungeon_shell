@@ -1,8 +1,13 @@
-import json
-from typing import Dict, List, Optional, Union
+from typing import List, Optional, Union
 
 from creature import Creature, Stat
 from equipment import Equipment, Weapon
+
+QUALIFIER_STRONG = 'strong'
+QUALIFIER_FAST = 'fast'
+QUALIFIER_SHARP = 'sharp'
+QUALIFIER_SMART = 'smart'
+QUALIFIER_LUCKY = 'lucky'
 
 
 class Qualifier():
@@ -12,16 +17,6 @@ class Qualifier():
 
     def __str__(self) -> str:
         return f'{self.name} {f"({self.effect})" if self.effect else ""}'
-
-
-QUALIFIER_STRONG = Qualifier('strong', '+2 strength')
-QUALIFIER_FAST = Qualifier('fast', '+2 speed')
-QUALIFIER_SHARP = Qualifier('sharp', '+2 precision')
-QUALIFIER_SMART = Qualifier('smart', '+2 mental')
-QUALIFIER_LUCKY = Qualifier('lucky', '+1 luck token')
-
-with open('../resources/magic.json') as f:
-    MAGIC_TYPES: Dict[str, str] = json.load(f)
 
 
 class Player(Creature):
@@ -142,8 +137,8 @@ class Player(Creature):
             QUALIFIER_SMART: self.mental
         }
         if self._qualifier is not None and \
-           self._qualifier in corresponding_stat.keys():
-            corresponding_stat[self._qualifier].max -= 2
-        if value is not None and value in corresponding_stat.keys():
-            corresponding_stat[value].max += 2
+           self._qualifier.name in corresponding_stat.keys():
+            corresponding_stat[self._qualifier.name].max -= 2
+        if value is not None and value.name in corresponding_stat.keys():
+            corresponding_stat[value.name].max += 2
         self._qualifier = value

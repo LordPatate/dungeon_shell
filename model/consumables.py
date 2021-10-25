@@ -1,10 +1,11 @@
 import json
 from enum import Enum, auto
+from typing import Dict
 
 from creature import Creature
 from model.npc import NPCFactory
 from npc import NPC
-from player import MAGIC_TYPES, Player
+from player import Player
 
 
 class Consumable:
@@ -74,6 +75,8 @@ class Bomb(Consumable):
 
 class Scroll(Consumable):
     POWER_LEVEL = 4
+    with open('resources/magic.json') as f:
+        MAGIC_TYPES: Dict[str, str] = json.load(f)
 
     def __init__(self, magic_type: str) -> None:
         super().__init__()
@@ -81,7 +84,7 @@ class Scroll(Consumable):
 
     def __str__(self) -> str:
         return f'{self.magic_type} scroll: \
-            {MAGIC_TYPES[self.magic_type].replace("X", str(Scroll.POWER_LEVEL))}'
+            {Scroll.MAGIC_TYPES[self.magic_type].replace("X", str(Scroll.POWER_LEVEL))}'
 
 
 class SummonningStone(Consumable):
