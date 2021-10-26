@@ -32,7 +32,8 @@ class Stat:
 
 
 class Creature:
-    def __init__(self):
+    def __init__(self, name):
+        self.name = name
         self._on_death_listeners: List[Callable] = []
 
     def hurt(self, damage: int):

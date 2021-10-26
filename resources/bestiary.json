@@ -12,5 +12,13 @@
         "bandit": {"level":3},
         "archer": {"level":4, "damage":6, "health":10},
         "knight": {"level":5, "health":12, "armor":3}
+    },
+    "summonnables": {
+        "fairy": {"level":1, "damage":0, "abilities":"heal (2)"},
+        "imp": {"level":2, "damage":5, "health":3, "abilities":"ranged fire attacks"},
+        "phoenix": {"level":3, "health":6, "abilities":"immune to fire"},
+        "elemental": {"level":4, "abilities":"melee creature made of a specific magic type"},
+        "undead knight": {"level":5, "health":12, "armor":3},
+        "golem": {"level":6, "health":14, "armor":4}
     }
 }

@@ -1,11 +1,9 @@
-import json
 from typing import List, Optional, Union
-
-EQUIPMENT_FILE = 'resources/equipment.json'
-ARMORY_FILE = 'resources/armory.json'
 
 
 class Weapon:
+    RESOURCE_FILE = 'resources/armory.json'
+
     def __init__(self,
                  name: str,
                  damage: int,
@@ -34,6 +32,8 @@ class Weapon:
 
 
 class Equipment:
+    RESOURCE_FILE = 'resources/equipment.json'
+
     def __init__(self,
                  name: str,
                  is_prop: bool,
@@ -63,33 +63,3 @@ class Equipment:
             description.append(self.abilities)
 
         return ', '.join(description)
-
-
-class EquipmentFactory:
-    @staticmethod
-    def weapon_from_json(src: str) -> Weapon:
-        obj = json.loads(src)
-        return Weapon(**obj)
-
-    @staticmethod
-    def equipment_from_json(src: str) -> Equipment:
-        obj = json.loads(src)
-        return Equipment(**obj)
-
-    @staticmethod
-    def weapon_from_name(category: str, name: str) -> Weapon:
-        with open(ARMORY_FILE) as f:
-            root = json.load(f)
-
-        obj = root[category][name]
-
-        return Weapon(**obj)
-
-    @staticmethod
-    def equipment_from_name(name: str) -> Equipment:
-        with open(EQUIPMENT_FILE) as f:
-            root = json.load(f)
-
-        obj = root['equipment'][name]
-
-        return Equipment(**obj)

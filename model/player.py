@@ -1,16 +1,24 @@
+from enum import Enum, auto
 from typing import List, Optional, Union
 
 from creature import Creature, Stat
 from equipment import Equipment, Weapon
 
-QUALIFIER_STRONG = 'strong'
-QUALIFIER_FAST = 'fast'
-QUALIFIER_SHARP = 'sharp'
-QUALIFIER_SMART = 'smart'
-QUALIFIER_LUCKY = 'lucky'
+
+class PlayerStat(Enum):
+    STRENGTH = auto()
+    SPEED = auto()
+    PRECISION = auto()
+    MENTAL = auto()
 
 
 class Qualifier():
+    STRONG = 'strong'
+    FAST = 'fast'
+    SHARP = 'sharp'
+    SMART = 'smart'
+    LUCKY = 'lucky'
+
     def __init__(self, name, effect) -> None:
         self.name: str = name
         self.effect: str = effect
@@ -27,9 +35,7 @@ class Player(Creature):
                  precision: int,
                  mental:    int
                  ) -> None:
-        super().__init__()
-
-        self.name: str = name
+        super().__init__(name)
 
         self.strength:  Stat = Stat(strength)
         self.speed:     Stat = Stat(speed)
@@ -131,10 +137,10 @@ class Player(Creature):
     @qualifier.setter
     def qualifier(self, value: Optional[Qualifier]) -> None:
         corresponding_stat = {
-            QUALIFIER_STRONG: self.strength,
-            QUALIFIER_FAST: self.speed,
-            QUALIFIER_SHARP: self.precision,
-            QUALIFIER_SMART: self.mental
+            Qualifier.STRONG: self.strength,
+            Qualifier.FAST: self.speed,
+            Qualifier.SHARP: self.precision,
+            Qualifier.SMART: self.mental
         }
         if self._qualifier is not None and \
            self._qualifier.name in corresponding_stat.keys():

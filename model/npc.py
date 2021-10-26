@@ -1,12 +1,11 @@
-import json
 from typing import Optional, Union
 
 from creature import Creature, Stat
 
-BESTIARY_FILENAME = "resources/bestiary.json"
-
 
 class NPC(Creature):
+    RESOURCE_FILE = "resources/bestiary.json"
+
     def __init__(self,
                  name: str,
                  level: int,
@@ -15,8 +14,7 @@ class NPC(Creature):
                  armor: int = 0,
                  abilities: str = None
                  ) -> None:
-        super().__init__()
-        self.name: str = name
+        super().__init__(name)
         self.level: int = level
         self.damage: int = level if damage == -1 else damage
         if isinstance(health, int):
@@ -42,19 +40,3 @@ class NPC(Creature):
 
     def get_armor(self) -> int:
         return self.armor
-
-
-class NPCFactory:
-    @staticmethod
-    def from_json(src: str) -> NPC:
-        obj = json.loads(src)
-        return NPC(**obj)
-
-    @staticmethod
-    def from_name(category: str, name: str) -> NPC:
-        with open(BESTIARY_FILENAME) as f:
-            root = json.load(f)
-
-        obj = root[category][name]
-
-        return NPC(**obj)

@@ -1,9 +1,8 @@
 import json
-from enum import Enum, auto
 from typing import Dict
 
 from creature import Creature
-from model.npc import NPCFactory
+from model.player import PlayerStat
 from npc import NPC
 from player import Player
 
@@ -15,52 +14,52 @@ class Consumable:
     def __str__(self) -> str:
         raise NotImplementedError()
 
-    def use(self) -> None:
+    def use(self) -> str:
         if self.depleted:
             raise Exception('This item is depleted and cannot be used.')
         self.depletes()
+        return NotImplemented
 
     def depletes(self):
         self.depleted = True
 
 
-class PotionType(Enum):
-    SPECIAL = 0
-    STRENGTH = auto()
-    SPEED = auto()
-    PRECISION = auto()
-    MENTAL = auto()
-
-
 class Potion(Consumable):
     HEAL_AMOUNT = 6
 
-    def __init__(self, kind: PotionType, effect: str = None):
+    def __init__(self, kind: str, effect: str = None):
         super().__init__()
-        if kind is PotionType.SPECIAL:
-            if effect is None:
-                raise ValueError(f'You must specify an effect for {PotionType.SPECIAL.name} potions.')
-        else:
+        if self.is_basic():
             if effect is not None:
-                raise ValueError(f'Only {PotionType.SPECIAL.name} potions can have an effect.')
+                raise ValueError('Only non-basic potions can have a special effect.')
+        else:
+            if effect is None:
+                raise ValueError('You must specify an effect for non-basic potions.')
         self.kind = kind
         self.effect = effect
 
     def __str__(self) -> str:
-        name = self.kind.name
-        if self.kind is PotionType.SPECIAL:
-            return f'{name.capitalize()} potion: {self.effect}'
+        if self.is_basic():
+            return f'{self.kind.capitalize()} potion (restores up to {Potion.HEAL_AMOUNT} {self.kind})'
         else:
-            return f'{name.capitalize()} potion (restores up to {Potion.HEAL_AMOUNT} {name})'
+            return f'{self.kind.capitalize()} potion: {self.effect}'
 
-    def use(self, target: Creature = None) -> None:
+    def use(self, target: Creature = None) -> str:
         super().use()
-        if target is None:
-            raise ValueError("'target' argument required for potions")
-        if isinstance(target, Player):
-            target.get_stat(self.kind.name.lower()).cur += Potion.HEAL_AMOUNT
+        if self.is_basic():
+            if target is None:
+                raise ValueError("'target' argument required for potions")
+            if isinstance(target, Player):
+                target.get_stat(self.kind).cur += Potion.HEAL_AMOUNT
+                return f'Restored {Potion.HEAL_AMOUNT} {self.kind} to {target.name}'
+            else:
+                target.heal(Potion.HEAL_AMOUNT)
+                return f'Healed {target.name} for {Potion.HEAL_AMOUNT} HP.'
         else:
-            target.heal(Potion.HEAL_AMOUNT)
+            return self.effect  # type: ignore[return-value]
+
+    def is_basic(self):
+        return self.kind in PlayerStat.__members__.keys()
 
 
 class Bomb(Consumable):
@@ -75,7 +74,8 @@ class Bomb(Consumable):
 
 class Scroll(Consumable):
     POWER_LEVEL = 4
-    with open('resources/magic.json') as f:
+    RESOURCE_FILE = 'resources/magic.json'
+    with open(RESOURCE_FILE) as f:
         MAGIC_TYPES: Dict[str, str] = json.load(f)
 
     def __init__(self, magic_type: str) -> None:
@@ -96,23 +96,7 @@ class SummonningStone(Consumable):
     def __str__(self) -> str:
         return f'summons: {self.creature}'
 
-    def use(self) -> None:
+    def use(self) -> str:
         if self.depleted:
             raise Exception(f"This stone's {self.creature.name} is dead and cannot be summoned again.")
-
-
-class ConsumableFactory:
-    @staticmethod
-    def potion_from_json(src: str) -> Potion:
-        obj = json.loads(src)
-        return Potion(PotionType.SPECIAL, obj["effect"])
-
-    @staticmethod
-    def bomb_from_json(src: str) -> Bomb:
-        obj = json.loads(src)
-        return Bomb(**obj)
-
-    @staticmethod
-    def summoning_stone_from_json(src: str) -> SummonningStone:
-        obj = json.loads(src)
-        return SummonningStone(NPCFactory.from_json(**obj))
+        return f'Summonned {self.creature}'

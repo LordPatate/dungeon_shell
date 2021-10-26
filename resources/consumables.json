@@ -1,28 +1,20 @@
 {
-    "special potions": [
-        {"effect":"inflict 3 more melee damage for a few minutes"},
-        {"effect":"one more action per turn for a few minutes"},
-        {"effect":"+3 critical chance for a few minutes"},
-        {"effect":"spells cost 3 less for a few minutes"},
-        {"effect":"become invisible for a very short time"},
-        {"effect":"transform into a desired up-to-level-3 creature for several minutes"},
-        {"effect":"see in the dark for several minutes"},
-        {"effect":"resurect a recently dead creature"}
-    ],
-    "bombs": [
-        {"kind":"classic", "effect": "explodes dealing 8 damage at point of impact and 4 in a small area; causes minor destruction"},
-        {"kind":"shrapnel", "effect": "shatter into plenty of small sharp pieces of glass and metal, dealing 6 damage to all creatures in a large radius"},
-        {"kind":"poison", "effect":"liberates a toxic cloud gas that dissipates quickly, poisoning all creatures in a large radius"},
-        {"kind":"flame", "effect":"spill ignated oil all targets within a small radius, dealing them 4 damage each turn"},
-        {"kind":"smoke", "effect":"produce a thick smoke screen big enough to fill a small room"},
-        {"kind":"flash", "effect":"emits a flash of brilliant light, blinding for several seconds anyone looking at it"}
-    ],
-    "summonnables": [
-        {"name":"fairy", "level":1, "damage":0, "abilities":"heal (2)"},
-        {"name":"imp", "level":2, "damage":5, "health":3, "abilities":"ranged fire attacks"},
-        {"name":"phoenix", "level":3, "health":6, "abilities":"immune to fire"},
-        {"name":"elemental", "level":4, "abilities":"melee creature made of a specific magic type"},
-        {"name":"undead knight", "level":5, "health":12, "armor":3},
-        {"name":"golem", "level":6, "health":14, "armor":4}
-    ]
+    "special potions": {
+        "power": {"effect":"inflict 3 more melee damage for a few minutes"},
+        "swiftness": {"effect":"one more action per turn for a few minutes"},
+        "focus": {"effect":"+3 critical chance for a few minutes"},
+        "serenity": {"effect":"spells cost 3 less for a few minutes"},
+        "invisibility": {"effect":"become invisible for a very short time"},
+        "transformation": {"effect":"transform into a desired up-to-level-3 creature for several minutes"},
+        "night vision": {"effect":"see in the dark for several minutes"},
+        "resurection": {"effect":"resurect a recently dead creature"}
+    },
+    "bombs": {
+        "classic": {"effect": "explodes dealing 8 damage at point of impact and 4 in a small area; causes minor destruction"},
+        "shrapnel": {"effect": "shatter into plenty of small sharp pieces of glass and metal, dealing 6 damage to all creatures in a large radius"},
+        "poison": {"effect":"liberates a toxic cloud gas that dissipates quickly, poisoning all creatures in a large radius"},
+        "flame": {"effect":"spill ignated oil all targets within a small radius, dealing them 4 damage each turn"},
+        "smoke": {"effect":"produce a thick smoke screen big enough to fill a small room"},
+        "flash": {"effect":"emits a flash of brilliant light, blinding for several seconds anyone looking at it"}
+    }
 }
