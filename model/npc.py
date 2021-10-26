@@ -51,12 +51,10 @@ class NPCFactory:
         return NPC(**obj)
 
     @staticmethod
-    def monster(name: str) -> NPC:
+    def from_name(category: str, name: str) -> NPC:
         with open(BESTIARY_FILENAME) as f:
             root = json.load(f)
 
-        for monster in root['monsters']:
-            if monster['name'] == name:
-                return NPC(**monster)
+        obj = root[category][name]
 
-        raise ValueError(f'No monster named {name} in bestiary.')
+        return NPC(**obj)
