@@ -4,7 +4,7 @@ from creature import Creature, Stat
 
 
 class NPC(Creature):
-    RESOURCE_FILE = "resources/bestiary.json"
+    RESOURCE_FILE = "../resources/bestiary.json"
 
     def __init__(self,
                  name: str,

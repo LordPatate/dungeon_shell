@@ -1,8 +1,7 @@
+from consumables import Bomb, Consumable, Potion
+from equipment import Equipment, Weapon
 from factories import Factory
-from model.consumables import Consumable
 from npc import NPC
-from equipment import Weapon, Equipment
-from consumables import Potion, Bomb
 
 npc_factory = Factory(NPC.RESOURCE_FILE, NPC)
 weapon_factory = Factory(Weapon.RESOURCE_FILE, Weapon)

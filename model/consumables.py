@@ -2,13 +2,12 @@ import json
 from typing import Dict
 
 from creature import Creature
-from model.player import PlayerStat
 from npc import NPC
-from player import Player
+from player import Player, PlayerStat
 
 
 class Consumable:
-    RESOURCE_FILE = 'resources/consumables.json'
+    RESOURCE_FILE = '../resources/consumables.json'
 
     def __init__(self):
         self.depleted = False
@@ -31,13 +30,13 @@ class Potion(Consumable):
 
     def __init__(self, kind: str, effect: str = None):
         super().__init__()
+        self.kind = kind
         if self.is_basic():
             if effect is not None:
                 raise ValueError('Only non-basic potions can have a special effect.')
         else:
             if effect is None:
                 raise ValueError('You must specify an effect for non-basic potions.')
-        self.kind = kind
         self.effect = effect
 
     def __str__(self) -> str:
@@ -71,12 +70,12 @@ class Bomb(Consumable):
         self.effect = effect
 
     def __str__(self) -> str:
-        return '{kind} bomb: {effect}'.format(**self.__dict__)
+        return f'{self.kind.capitalize()} bomb: {self.effect}'
 
 
 class Scroll(Consumable):
     POWER_LEVEL = 4
-    RESOURCE_FILE = 'resources/magic.json'
+    RESOURCE_FILE = '../resources/magic.json'
     with open(RESOURCE_FILE) as f:
         MAGIC_TYPES: Dict[str, str] = json.load(f)
 
@@ -96,7 +95,7 @@ class SummonningStone(Consumable):
         self.creature.add_on_death_listener(self.depletes)
 
     def __str__(self) -> str:
-        return f'summons: {self.creature}'
+        return f'Summoning stone: summons {self.creature}'
 
     def use(self) -> str:
         if self.depleted:
