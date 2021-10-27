@@ -26,6 +26,8 @@ class Factory:
 
         if category is None:
             candidates: Dict = random.choice(list(root.values()))
+        else:
+            candidates: Dict = root[category]
 
         tuple: Tuple[str, Dict] = random.choice(list(candidates.items()))
         name, obj = tuple
