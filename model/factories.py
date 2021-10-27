@@ -1,18 +1,24 @@
 import json
 import random
-from typing import Dict, Tuple
+from typing import Dict, Generic, Tuple, TypeVar
+
+from consumables import Consumable
+from equipment import Equipment, Weapon
+from npc import NPC
+
+T = TypeVar('T', NPC, Weapon, Equipment, Consumable)
 
 
-class Factory:
+class Factory(Generic[T]):
     def __init__(self, json_file: str, target_class: type):
         self.json_file = json_file
         self.target_class = target_class
 
-    def from_json(self, src: str):
+    def from_json(self, src: str) -> T:
         obj: Dict = json.loads(src)
         return self.target_class(**obj)
 
-    def from_name(self, category: str, name: str):
+    def from_name(self, category: str, name: str) -> T:
         with open(self.json_file) as f:
             root: Dict = json.load(f)
 
@@ -20,7 +26,7 @@ class Factory:
 
         return self.target_class(name, **obj)
 
-    def random(self, category: str = None):
+    def random(self, category: str = None) -> T:
         with open(self.json_file) as f:
             root: Dict = json.load(f)
 
