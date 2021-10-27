@@ -8,6 +8,8 @@ from player import Player
 
 
 class Consumable:
+    RESOURCE_FILE = 'resources/consumables.json'
+
     def __init__(self):
         self.depleted = False
 
