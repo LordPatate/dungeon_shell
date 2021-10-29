@@ -32,6 +32,8 @@ class NPC(Creature):
             details.append(f'{self.damage} damage')
         if self.armor > 0:
             details.append(f'{self.armor} armor')
+        if self.abilities is not None:
+            details.append(f'abilities: {self.abilities}')
 
         return f'{summary} ({", ".join(details)})' if details else summary
 
