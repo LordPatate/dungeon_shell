@@ -43,7 +43,7 @@ class BombFactory(GenericFactory):
 
 
 class ScrollFactory():
-    RESOURCE_FILE = '../resources/magic.json'
+    RESOURCE_FILE = './resources/magic.json'
     POWER_LEVEL = 4
 
     def __init__(self) -> None:
@@ -64,7 +64,7 @@ class ScrollFactory():
 
 
 class SummonningStoneFactory():
-    CATEGORY_SUMMONNABLES = 'summonables'
+    CATEGORY_SUMMONNABLES = 'summonnables'
 
     def __init__(self, npc_factory: GenericFactory):
         self._npc_factory = npc_factory

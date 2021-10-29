@@ -4,7 +4,7 @@ from model.player import Player, PlayerStat
 
 
 class Consumable:
-    RESOURCE_FILE = '../resources/consumables.json'
+    RESOURCE_FILE = './resources/consumables.json'
 
     def __init__(self, name: str, effect: str):
         self.depleted = False

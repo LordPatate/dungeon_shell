@@ -2,7 +2,7 @@ from typing import List, Optional, Union
 
 
 class Weapon:
-    RESOURCE_FILE = '../resources/armory.json'
+    RESOURCE_FILE = './resources/armory.json'
 
     def __init__(self,
                  name: str,
@@ -32,7 +32,7 @@ class Weapon:
 
 
 class Equipment:
-    RESOURCE_FILE = '../resources/equipment.json'
+    RESOURCE_FILE = './resources/equipment.json'
 
     def __init__(self,
                  name: str,
