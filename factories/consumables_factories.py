@@ -4,21 +4,42 @@ import random
 from typing import Dict
 
 from factories.factory import GenericFactory
-from model.consumables import Consumable
+from model.consumables import Consumable, BasicPotion
+from model.player import PlayerStat
+
+
+class ConsumableFactory(GenericFactory):
+    def random(self):
+        pass  # TODO
+
+
+class PotionFactory(GenericFactory):
+    CATEGORY_SPECIAL = 'special potions'
+
+    def __init__(self):
+        super().__init__(Consumable.RESOURCE_FILE, Consumable)
+
+    def random_basic(self) -> BasicPotion:
+        return BasicPotion(random.choice(list(PlayerStat.__members__.keys())))
+
+    def from_name(self, name: str) -> Consumable:
+        return super().from_name(name, PotionFactory.CATEGORY_SPECIAL)
+
+    def random_special(self) -> Consumable:
+        return super().random(category=PotionFactory.CATEGORY_SPECIAL)
 
 
 class BombFactory(GenericFactory):
-    RESOURCE_FILE = Consumable.RESOURCE_FILE
-    CATEGORY_NAME = 'bombs'
+    CATEGORY_BOMBS = 'bombs'
 
     def __init__(self):
-        super().__init__(BombFactory.RESOURCE_FILE, Consumable)
+        super().__init__(Consumable.RESOURCE_FILE, Consumable)
 
-    def from_name(self, name: str, _ = None) -> Consumable:
-        return super().from_name(name, BombFactory.CATEGORY_NAME)
+    def from_name(self, name: str, _=None) -> Consumable:
+        return super().from_name(name, BombFactory.CATEGORY_BOMBS)
 
     def random(self):
-        return super().random(category=BombFactory.CATEGORY_NAME)
+        return super().random(category=BombFactory.CATEGORY_BOMBS)
 
 
 class ScrollFactory():
@@ -33,7 +54,7 @@ class ScrollFactory():
         name = f'{magic_type} scroll'
         effect = self.magic_types[magic_type]\
             .replace("X", str(ScrollFactory.POWER_LEVEL))
-        
+
         return Consumable(name, effect)
 
     def random(self):

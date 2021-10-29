@@ -25,39 +25,29 @@ class Consumable:
         self.depleted = True
 
 
-class Potion(Consumable):
+class BasicPotion(Consumable):
     HEAL_AMOUNT = 6
 
-    def __init__(self, kind: str, effect: str = None):
+    def __init__(self, kind: str):
+        if self.kind not in PlayerStat.__members__.keys():
+            raise ValueError(f"{kind} is not a valid kind for basic potions")
         self.kind = kind
-        if self.is_basic():
-            if effect is not None:
-                raise ValueError('Only non-basic potions can have a special effect.')
-
-            effect = f'restores up to {Potion.HEAL_AMOUNT} {self.kind}'
-        else:
-            if effect is None:
-                raise ValueError('You must specify an effect for non-basic potions.')
 
         name = f'{kind} potion'
+        effect = f'restores up to {BasicPotion.HEAL_AMOUNT} {self.kind}'
         super().__init__(name, effect)
 
     def use(self, target: Creature = None) -> str:
         super().use()
-        if self.is_basic():
-            if target is None:
-                raise ValueError("'target' argument required for potions")
-            if isinstance(target, Player):
-                target.get_stat(self.kind).cur += Potion.HEAL_AMOUNT
-                return f'Restored {Potion.HEAL_AMOUNT} {self.kind} to {target.name}'
-            else:
-                target.heal(Potion.HEAL_AMOUNT)
-                return f'Healed {target.name} for {Potion.HEAL_AMOUNT} HP.'
-        else:
-            return f'Apply effect "{self.effect}" to {target}'  # type: ignore[return-value]
+        if target is None:
+            raise ValueError("'target' argument required for potions")
 
-    def is_basic(self):
-        return self.kind in PlayerStat.__members__.keys()
+        if isinstance(target, Player):
+            target.get_stat(self.kind).cur += BasicPotion.HEAL_AMOUNT
+            return f'Restored {BasicPotion.HEAL_AMOUNT} {self.kind} to {target.name}'
+
+        target.heal(BasicPotion.HEAL_AMOUNT)
+        return f'Healed {target.name} for {BasicPotion.HEAL_AMOUNT} HP.'
 
 
 class SummonningStone(Consumable):
