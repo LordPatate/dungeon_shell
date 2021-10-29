@@ -1,6 +1,6 @@
 from typing import Optional, Union
 
-from creature import Creature, Stat
+from model.creature import Creature, Stat
 
 
 class NPC(Creature):

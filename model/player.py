@@ -1,8 +1,8 @@
 from enum import Enum, auto
 from typing import List, Optional, Union
 
-from creature import Creature, Stat
-from equipment import Equipment, Weapon
+from model.creature import Creature, Stat
+from model.equipment import Equipment, Weapon
 
 
 class PlayerStat(Enum):
