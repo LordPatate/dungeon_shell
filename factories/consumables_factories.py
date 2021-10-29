@@ -4,7 +4,7 @@ import random
 from typing import Dict
 
 from factories.factory import GenericFactory
-from model.consumables import Consumable, BasicPotion
+from model.consumables import Consumable, BasicPotion, SummonningStone
 from model.player import PlayerStat
 
 
@@ -61,3 +61,17 @@ class ScrollFactory():
         magic_type = random.choice(self.magic_types.keys())
 
         return self.from_magic_type(magic_type)
+
+
+class SummonningStoneFactory():
+    CATEGORY_SUMMONNABLES = 'summonables'
+
+    def __init__(self, npc_factory: GenericFactory):
+        self._npc_factory = npc_factory
+
+    def from_creature_name(self, creature_name: str):
+        creature = self._npc_factory.from_name(
+            creature_name,
+            SummonningStoneFactory.CATEGORY_SUMMONNABLES
+        )
+        return SummonningStone(creature)
