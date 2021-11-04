@@ -4,6 +4,14 @@ from model.creature import Creature, Stat
 
 
 class NPC(Creature):
+    """A Non Playable Character.
+
+    NPCs are labelled with a level that gives a general idea of their power.
+    A higher level generally means the NPC can deal more damage and has more
+    health. By default, its damage is equal to its level; and it has 3 times
+    more health.
+    """
+
     RESOURCE_FILE = "./resources/bestiary.json"
 
     def __init__(self,

@@ -2,6 +2,14 @@ from typing import List, Optional, Union
 
 
 class Weapon:
+    """A weapon that can be wielded by a player.
+
+    Weapons deal determined damage.
+    They can be either wielded with one hand or require both.
+    They can have special abilities or critical effects. By default, they
+    don't, and critical hits deal twice more damage.
+    """
+
     RESOURCE_FILE = './resources/armory.json'
 
     def __init__(self,
@@ -32,6 +40,13 @@ class Weapon:
 
 
 class Equipment:
+    """A piece of equipment that can be worn by a player.
+
+    Equipment can be armor, backpack, capes, jewelry, hats, clothes, etc.
+    It provides armor, allows to carry more items or has special abilities.
+    Unless it is tagged as a prop, a player can only wear one equipment.
+    If an equipment is tagged as a prop, it can be worn without limitations.
+    """
     RESOURCE_FILE = './resources/equipment.json'
 
     def __init__(self,

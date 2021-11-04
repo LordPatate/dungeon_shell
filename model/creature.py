@@ -2,6 +2,13 @@ from typing import Callable, List
 
 
 class Stat:
+    """A stat pool, with a maximum amount and a current value.
+
+    Attributes:
+    * max: The maximum amount of points in this stat
+    * cur: The current 'remaining' points in this stat
+    """
+
     def __init__(self, max: int) -> None:
         self._max: int = max
         self._cur: int = max
@@ -32,29 +39,44 @@ class Stat:
 
 
 class Creature:
+    """A creature that can be hurt, healed and killed."""
+
     def __init__(self, name):
         self.name = name
         self._on_death_listeners: List[Callable] = []
 
     def hurt(self, damage: int):
+        """Deal <damage> to this creature.
+
+        The creature's armor is taken into account to reduce
+        the damage actually inflicted.
+        self.die() is called if health reaches 0.
+        """
         health = self.get_health()
         armor = self.get_armor()
         damage = max(0, damage - armor)
         health.cur -= damage
         if health.cur == 0:
-            self.die()
+            self._die()
 
-    def die(self):
+    def _die(self):
+        """Call on death listeners."""
         for listener in self._on_death_listeners:
             listener()
 
     def heal(self, amount: int):
+        """Restores <amount> health to this creature."""
         health = self.get_health()
         if health.cur == 0:
             raise Exception('Cannot heal a dead creature')
         health.cur += amount
 
     def add_on_death_listener(self, listener: Callable) -> None:
+        """Adds <listener> to the list of on-death-listeners.
+
+        Registers the given callable as one of those that would be called
+        should this creatures die (i.e. its health reaches 0).
+        """
         self._on_death_listeners.append(listener)
 
     def get_health(self) -> Stat:

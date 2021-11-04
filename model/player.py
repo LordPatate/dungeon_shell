@@ -28,6 +28,17 @@ class Qualifier():
 
 
 class Player(Creature):
+    """A playable character.
+
+    Playable characters have 4 stats:
+    * Strength, which also acts as their health
+    * Speed
+    * Precision
+    * Mental
+    A qualifier should be given to them.
+    They can wield weapons, wear equipment and carry consumables.
+    They can get an expertise and a signature.
+    """
     def __init__(self,
                  name:      str,
                  strength:  int,
@@ -78,6 +89,10 @@ class Player(Creature):
         '''
 
     def equip(self, weapon: Weapon) -> None:
+        """Equip the player with <weapon> if possible.
+
+        Raises an Exception if the player's hands are full.
+        """
         hands_required = 2 if weapon.two_handed else 1
         if self._free_hands < hands_required:
             raise Exception("This player cannot hold this weapon !"
@@ -86,6 +101,13 @@ class Player(Creature):
         self.weapons.append(weapon)
 
     def unequip(self, weapon: Union[Weapon, int, str]) -> Optional[Weapon]:
+        """Remove the specified weapon from the player's hands.
+
+        Returns the weapon that was removed if such a weapon was in this
+        player's hands.
+        Warning: the returned weapon should be retrived by the caller, else
+        the object reference would be lost.
+        """
         removed_weapon = None
         if isinstance(weapon, Weapon):
             if weapon not in self.weapons:
@@ -106,6 +128,12 @@ class Player(Creature):
         return removed_weapon
 
     def wear(self, equipment: Optional[Equipment]) -> Optional[Equipment]:
+        """Put on the specified equipment if possible.
+
+        If equipment is a prop, simply add it to the list and return None;
+        otherwise replace the previous equipment which is returned.
+        Passing None effectively removes any worn equipment.
+        """
         if equipment is not None and equipment.is_prop:
             self.props.append(equipment)
             return None
