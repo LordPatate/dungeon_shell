@@ -12,7 +12,7 @@ class PlayerStat(Enum):
     MENTAL = auto()
 
 
-class Qualifier():
+class Qualifier:
     STRONG = 'strong'
     FAST = 'fast'
     SHARP = 'sharp'
@@ -105,24 +105,25 @@ class Player(Creature):
 
         Returns the weapon that was removed if such a weapon was in this
         player's hands.
-        Warning: the returned weapon should be retrived by the caller, else
+        Warning: the returned weapon should be retrieved by the caller, else
         the object reference would be lost.
         """
-        removed_weapon = None
-        if isinstance(weapon, Weapon):
-            if weapon not in self.weapons:
-                raise Exception('This player is not wielding this weapon.')
-            self.weapons.remove(weapon)
-            removed_weapon = weapon
-        elif isinstance(weapon, int):
-            removed_weapon = self.weapons.pop(weapon)
-        elif isinstance(weapon, str):
-            for item in self.weapons:
-                if item.name is weapon:
-                    self.weapons.remove(item)
-                    removed_weapon = item
-            raise Exception('This player is not wielding any weapon with'
-                            'that name.')
+        def remove_weapon() -> Weapon:
+            if isinstance(weapon, Weapon):
+                if weapon not in self.weapons:
+                    raise Exception('This player is not wielding this weapon.')
+                self.weapons.remove(weapon)
+                return weapon
+            elif isinstance(weapon, int):
+                return self.weapons.pop(weapon)
+            elif isinstance(weapon, str):
+                for item in self.weapons:
+                    if item.name is weapon:
+                        self.weapons.remove(item)
+                        return item
+                raise Exception('This player is not wielding any weapon with'
+                                'that name.')
+        removed_weapon = remove_weapon()
 
         self._free_hands += 2 if removed_weapon.two_handed else 1
         return removed_weapon
