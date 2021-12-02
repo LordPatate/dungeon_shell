@@ -44,20 +44,17 @@ class Equipment:
 
     Equipment can be armor, backpack, capes, jewelry, hats, clothes, etc.
     It provides armor, allows to carry more items or has special abilities.
-    Unless it is tagged as a prop, a player can only wear one equipment.
-    If an equipment is tagged as a prop, it can be worn without limitations.
+    A player can only wear one equipment.
     """
     RESOURCE_FILE = './resources/equipment.json'
 
     def __init__(self,
                  name: str,
-                 is_prop: bool = False,
                  armor: int = 0,
                  capacity: int = 0,
                  abilities: str = None
                  ) -> None:
         self.name: str = name
-        self.is_prop: bool = is_prop
         self.armor: int = armor
         self.capacity: int = capacity
         self.abilities: Optional[str] = abilities

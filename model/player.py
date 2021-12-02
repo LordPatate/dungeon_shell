@@ -1,3 +1,4 @@
+import logging
 from enum import Enum, auto
 from typing import List, Optional, Union
 
@@ -131,18 +132,13 @@ class Player(Creature):
     def wear(self, equipment: Optional[Equipment]) -> Optional[Equipment]:
         """Put on the specified equipment if possible.
 
-        If equipment is a prop, simply add it to the list and return None;
-        otherwise replace the previous equipment which is returned.
+        Replace the previous equipment which is returned.
         Passing None effectively removes any worn equipment.
         """
-        if equipment is not None and equipment.is_prop:
-            self.props.append(equipment)
-            return None
-        else:
-            old = self.equipment
-            self.equipment = equipment
-            print(f'Warning: now wearing {equipment} instead of {old}.')
-            return old
+        old = self.equipment
+        self.equipment = equipment
+        logging.info(f'Warning: now wearing {equipment} instead of {old}.')
+        return old
 
     def get_health(self) -> Stat:
         return self.strength
