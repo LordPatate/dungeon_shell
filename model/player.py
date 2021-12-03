@@ -2,6 +2,7 @@ import logging
 from enum import Enum, auto
 from typing import List, Optional, Union
 
+from model.consumables import Consumable
 from model.creature import Creature, Stat
 from model.equipment import Equipment, Weapon
 
@@ -64,6 +65,7 @@ class Player(Creature):
         self._free_hands = 2
         self.equipment: Optional[Equipment] = None
         self.props: List[Equipment] = []
+        self.consumables: List[Consumable] = []
 
     def __str__(self) -> str:
         return '{name} ({strength} • {speed} • {precision} • {mental})'\
@@ -141,6 +143,21 @@ class Player(Creature):
         self.equipment = equipment
         logging.info(f'Warning: now wearing {equipment} instead of {old}.')
         return old
+
+    def use(self, consumable: Union[Consumable, int, str]):
+        if isinstance(consumable, Consumable):
+            if consumable not in self.consumables:
+                raise Exception('This player does not have this consumable.')
+            self.consumables.remove(consumable)
+        elif isinstance(consumable, int):
+            consumable = self.consumables.pop(consumable)
+        elif isinstance(consumable, str):
+            for item in self.consumables:
+                if item.name == consumable:
+                    consumable = item
+                    self.consumables.remove(item)
+                    break
+        consumable.use()
 
     def get_health(self) -> Stat:
         return self.heath

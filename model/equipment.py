@@ -43,7 +43,7 @@ class Equipment:
     """A piece of equipment that can be worn by a player.
 
     Equipment can be armor, backpack, capes, jewelry, hats, clothes, etc.
-    It provides armor, allows to carry more items or has special abilities.
+    It can provide armor, enhance stats or grant special abilities.
     A player can only wear one equipment.
     """
     RESOURCE_FILE = './resources/equipment.json'
@@ -51,12 +51,10 @@ class Equipment:
     def __init__(self,
                  name: str,
                  armor: int = 0,
-                 capacity: int = 0,
                  abilities: str = None
                  ) -> None:
         self.name: str = name
         self.armor: int = armor
-        self.capacity: int = capacity
         self.abilities: Optional[str] = abilities
 
     def __str__(self) -> str:
@@ -66,10 +64,6 @@ class Equipment:
         if self.armor > 0:
             description.append(
                 f'+{self.armor} armor'
-            )
-        if self.capacity > 0:
-            description.append(
-                f'allows to carry {self.capacity} more items'
             )
         if self.abilities is not None:
             description.append(self.abilities)
