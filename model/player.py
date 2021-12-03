@@ -31,8 +31,9 @@ class Qualifier:
 class Player(Creature):
     """A playable character.
 
-    Playable characters have 4 stats:
-    * Strength, which also acts as their health
+    Starts with 10 health.
+    Playable characters have 4 other stats:
+    * Strength
     * Speed
     * Precision
     * Mental
@@ -48,11 +49,12 @@ class Player(Creature):
                  mental:    int
                  ) -> None:
         super().__init__(name)
+        self.heath = Stat(10)
 
-        self.strength:  Stat = Stat(strength)
-        self.speed:     Stat = Stat(speed)
-        self.precision: Stat = Stat(precision)
-        self.mental:    Stat = Stat(mental)
+        self.strength = Stat(strength)
+        self.speed = Stat(speed)
+        self.precision = Stat(precision)
+        self.mental = Stat(mental)
 
         self._qualifier: Optional[Qualifier] = None
         self.expertise: Optional[str] = None
@@ -141,7 +143,7 @@ class Player(Creature):
         return old
 
     def get_health(self) -> Stat:
-        return self.strength
+        return self.heath
 
     def get_armor(self) -> int:
         total = 0
