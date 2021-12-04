@@ -29,7 +29,7 @@ class BasicPotion(Consumable):
     HEAL_AMOUNT = 6
 
     def __init__(self, kind: str):
-        if self.kind not in PlayerStat.__members__.keys():
+        if kind not in PlayerStat.__members__.keys():
             raise ValueError(f"{kind} is not a valid kind for basic potions")
         self.kind = kind
 
@@ -58,10 +58,10 @@ class SummoningStone(Consumable):
         self.creature.add_on_death_listener(self.depletes)
 
         name = 'Summoning stone'
-        effect = f'summons {creature}. {SummoningStone.DEPLETION_CRETERIA}'
+        effect = f'summons {creature}. {SummoningStone.DEPLETION_CRITERIA}'
         super().__init__(name, effect)
 
     def use(self) -> str:
         if self.depleted:
             raise Exception(f"This stone's {self.creature.name} is dead and cannot be summoned again.")
-        return f'Summoned {self.creature}. {SummoningStone.DEPLETION_CRETERIA}'
+        return f'Summoned {self.creature}. {SummoningStone.DEPLETION_CRITERIA}'

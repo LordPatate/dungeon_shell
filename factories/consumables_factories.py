@@ -9,7 +9,7 @@ from model.player import PlayerStat
 
 
 class ConsumableFactory(GenericFactory):
-    def random(self):
+    def random(self, _=None):
         pass  # TODO
 
 
@@ -22,7 +22,7 @@ class PotionFactory(GenericFactory):
     def random_basic(self) -> BasicPotion:
         return BasicPotion(random.choice(list(PlayerStat.__members__.keys())))
 
-    def from_name(self, name: str) -> Consumable:
+    def from_name(self, name: str, _=None) -> Consumable:
         return super().from_name(name, PotionFactory.CATEGORY_SPECIAL)
 
     def random_special(self) -> Consumable:
@@ -38,7 +38,7 @@ class BombFactory(GenericFactory):
     def from_name(self, name: str, _=None) -> Consumable:
         return super().from_name(name, BombFactory.CATEGORY_BOMBS)
 
-    def random(self):
+    def random(self, _=None):
         return super().random(category=BombFactory.CATEGORY_BOMBS)
 
 
@@ -58,7 +58,7 @@ class ScrollFactory:
         return Consumable(name, effect)
 
     def random(self):
-        magic_type = random.choice(self.magic_types.keys())
+        magic_type = random.choice(list(self.magic_types.keys()))
 
         return self.from_magic_type(magic_type)
 
