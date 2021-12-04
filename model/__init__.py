@@ -1,5 +1,5 @@
-from consumables import BasicPotion, Consumable, SummoningStone
-from creature import Creature
-from equipment import Equipment, Weapon
-from npc import NPC
-from player import Player, PlayerStat, Qualifier
+from model.consumables import BasicPotion, Consumable, SummoningStone
+from model.creature import Creature
+from model.equipment import Equipment, Weapon
+from model.npc import NPC
+from model.player import Player, PlayerStat, Qualifier
