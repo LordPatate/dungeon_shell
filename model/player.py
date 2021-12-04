@@ -1,7 +1,6 @@
 from enum import Enum, auto
 from typing import Optional, Union, Dict, List
 
-from model.consumables import Consumable
 from model.creature import Creature, Stat
 from model.equipment import Equipment, Weapon
 
@@ -64,8 +63,8 @@ class Player(Creature):
         self._free_hands = 2
         self.equipment: Optional[Equipment] = None
         self.props: Dict[str, Equipment] = dict()
-        self.quick_access_consumables: Dict[str, List[Consumable]] = dict()
-        self.inventory: Dict[str, List[Union[Weapon, Equipment, Consumable]]] = dict()
+        self.quick_access_consumables: Dict[str, List['Consumable']] = dict()
+        self.inventory: Dict[str, List[Union[Weapon, Equipment, 'Consumable']]] = dict()
 
     def __str__(self) -> str:
         return '{name} ({strength} • {speed} • {precision} • {mental})'\
@@ -87,7 +86,7 @@ class Player(Creature):
           • """ + """;
           • """.join([
                 f'{len(category)} {name}'
-                for name, category in self.weapons
+                for name, category in self.weapons.items()
             ]) if self.weapons else "nothing"}
         Wears: {self.equipment if self.equipment else 'nothing'}
         Props: {"""
@@ -98,13 +97,13 @@ class Player(Creature):
           • """ + """;
           • """.join([
                 f'{len(category)} {name}'
-                for name, category in self.quick_access_consumables
+                for name, category in self.quick_access_consumables.items()
             ]) if self.quick_access_consumables else "none"}
         Inventory: {"""
           • """ + """;
           • """.join([
                 f'{len(category)} {name}'
-                for name, category in self.inventory
+                for name, category in self.inventory.items()
             ]) if self.inventory else "empty"}
         ============
         '''
