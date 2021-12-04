@@ -1,6 +1,7 @@
 from enum import Enum, auto
-from typing import Optional, Union, Dict, List
+from typing import Optional, Union, Dict
 
+from model.container import Container
 from model.creature import Creature, Stat
 from model.equipment import Equipment, Weapon
 
@@ -59,12 +60,12 @@ class Player(Creature):
         self.expertise: Optional[str] = None
         self.signature: Optional[str] = None
 
-        self.weapons: Dict[str, List[Weapon]] = dict()
+        self.weapons = Container[Weapon]()
         self._free_hands = 2
         self.equipment: Optional[Equipment] = None
         self.props: Dict[str, Equipment] = dict()
-        self.quick_access_consumables: Dict[str, List['Consumable']] = dict()
-        self.inventory: Dict[str, List[Union[Weapon, Equipment, 'Consumable']]] = dict()
+        self.quick_access_consumables = Container['Consumable']()
+        self.inventory = Container[Union[Weapon, Equipment, 'Consumable']]()
 
     def __str__(self) -> str:
         return '{name} ({strength} • {speed} • {precision} • {mental})'\
@@ -83,28 +84,19 @@ class Player(Creature):
         Mental:    {self.mental}
         ------------
         Wields: {"""
-          • """ + """;
-          • """.join([
-                f'{len(category)} {name}'
-                for name, category in self.weapons.items()
-            ]) if self.weapons else "nothing"}
+          • """ + """
+          • """.join(self.weapons.details()) if self.weapons else "nothing"}
         Wears: {self.equipment if self.equipment else 'nothing'}
         Props: {"""
-          • """ + """;
+          • """ + """
           • """.join(self.props.keys()) if self.props else 'none'}
         ------------
         Consumables: {"""
-          • """ + """;
-          • """.join([
-                f'{len(category)} {name}'
-                for name, category in self.quick_access_consumables.items()
-            ]) if self.quick_access_consumables else "none"}
+          • """ + """
+          • """.join(self.quick_access_consumables.details()) if self.quick_access_consumables else "none"}
         Inventory: {"""
-          • """ + """;
-          • """.join([
-                f'{len(category)} {name}'
-                for name, category in self.inventory.items()
-            ]) if self.inventory else "empty"}
+          • """ + """
+          • """.join(self.inventory.details()) if self.inventory else "empty"}
         ============
         '''
 
@@ -122,9 +114,7 @@ class Player(Creature):
                 raise Exception("This player cannot hold this weapon !"
                                 "Use 'unequip' to ditch one of your weapons.")
             self._free_hands -= hands_required
-            if item.name not in self.weapons:
-                self.weapons[item.name] = []
-            self.weapons[item.name].append(item)
+            self.weapons.push(item)
 
     def unequip(self, item_name: str):
         """Place the specified item in this player's inventory.
@@ -136,26 +126,19 @@ class Player(Creature):
             self.equipment = None
 
         elif item_name in self.weapons:
-            removed_item = self.weapons[item_name].pop()
-            if self.weapons[item_name] == []:
-                self.weapons.pop(item_name)
-
+            removed_item = self.weapons.remove(item_name)
             self._free_hands += 2 if removed_item.two_handed else 1
 
         else:
             raise Exception('This player is not wielding any weapon'
                             'or wearing any equipment with that name.')
 
-        if item_name not in self.inventory:
-            self.inventory[item_name] = []
-        self.inventory[item_name].append(removed_item)
+        self.inventory.push(removed_item)
 
     def use(self, consumable_name: str):
         if consumable_name not in self.quick_access_consumables:
             raise Exception('This player does not have any consumable with that name.')
-        consumable = self.quick_access_consumables[consumable_name].pop()
-        if self.quick_access_consumables[consumable_name] == []:
-            self.quick_access_consumables.pop(consumable_name)
+        consumable = self.quick_access_consumables.remove(consumable_name)
         consumable.use()
 
     def get_health(self) -> Stat:
