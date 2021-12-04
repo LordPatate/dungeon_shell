@@ -1,6 +1,6 @@
 import logging
 from enum import Enum, auto
-from typing import List, Optional, Union
+from typing import Optional, Union, Dict
 
 from model.consumables import Consumable
 from model.creature import Creature, Stat
@@ -61,11 +61,11 @@ class Player(Creature):
         self.expertise: Optional[str] = None
         self.signature: Optional[str] = None
 
-        self.weapons: List[Weapon] = []
+        self.weapons: Dict[str, Weapon] = dict()
         self._free_hands = 2
         self.equipment: Optional[Equipment] = None
-        self.props: List[Equipment] = []
-        self.consumables: List[Consumable] = []
+        self.props: Dict[str, Equipment] = dict()
+        self.consumables: Dict[str, Consumable] = dict()
 
     def __str__(self) -> str:
         return '{name} ({strength} • {speed} • {precision} • {mental})'\
@@ -93,56 +93,42 @@ class Player(Creature):
         ============
         '''
 
-    def equip(self, weapon: Weapon) -> None:
-        """Equip the player with <weapon> if possible.
+    def equip(self, item: Union[Weapon, Equipment]) -> None:
+        """Equip the player with <item> if possible, raises an exception otherwise."""
+        if isinstance(item, Equipment):
+            if self.equipment is not None:
+                raise Exception(f"This player is already equipped with {self.equipment}."
+                                "Use 'unequip' to remove it.")
+            self.equipment = item
 
-        Raises an Exception if the player's hands are full.
-        """
-        hands_required = 2 if weapon.two_handed else 1
-        if self._free_hands < hands_required:
-            raise Exception("This player cannot hold this weapon !"
-                            "Use 'unequip' to ditch one of your weapons.")
-        self._free_hands -= hands_required
-        self.weapons.append(weapon)
+        elif isinstance(item, Weapon):
+            hands_required = 2 if item.two_handed else 1
+            if self._free_hands < hands_required:
+                raise Exception("This player cannot hold this weapon !"
+                                "Use 'unequip' to ditch one of your weapons.")
+            self._free_hands -= hands_required
+            self.weapons[item.name] = item
 
-    def unequip(self, weapon: Union[Weapon, int, str]) -> Optional[Weapon]:
-        """Remove the specified weapon from the player's hands.
+    def unequip(self, item_name: str) -> Union[Weapon, Equipment]:
+        """Drop the specified weapon from the player's hands or the equipment they are wearing.
 
-        Returns the weapon that was removed if such a weapon was in this
-        player's hands.
+        Return the weapon that was removed if such a weapon was in this player's hands.
         Warning: the returned weapon should be retrieved by the caller, else
         the object reference would be lost.
         """
-        def remove_weapon() -> Weapon:
-            if isinstance(weapon, Weapon):
-                if weapon not in self.weapons:
-                    raise Exception('This player is not wielding this weapon.')
-                self.weapons.remove(weapon)
-                return weapon
-            elif isinstance(weapon, int):
-                return self.weapons.pop(weapon)
-            elif isinstance(weapon, str):
-                for item in self.weapons:
-                    if item.name is weapon:
-                        self.weapons.remove(item)
-                        return item
-                raise Exception('This player is not wielding any weapon with'
-                                'that name.')
-        removed_weapon = remove_weapon()
+        if self.equipment is not None and item_name == self.equipment.name:
+            removed_item = self.equipment
+            self.equipment = None
 
-        self._free_hands += 2 if removed_weapon.two_handed else 1
-        return removed_weapon
+        elif item_name in self.weapons:
+            removed_item = self.weapons[item_name]
+            self._free_hands += 2 if removed_item.two_handed else 1
 
-    def wear(self, equipment: Optional[Equipment]) -> Optional[Equipment]:
-        """Put on the specified equipment if possible.
+        else:
+            raise Exception('This player is not wielding any weapon'
+                            'or wearing any equipment with that name.')
 
-        Replace the previous equipment which is returned.
-        Passing None effectively removes any worn equipment.
-        """
-        old = self.equipment
-        self.equipment = equipment
-        logging.info(f'Warning: now wearing {equipment} instead of {old}.')
-        return old
+        return removed_item
 
     def use(self, consumable: Union[Consumable, int, str]):
         if isinstance(consumable, Consumable):
