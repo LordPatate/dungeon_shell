@@ -1,6 +1,5 @@
-import logging
 from enum import Enum, auto
-from typing import Optional, Union, Dict
+from typing import Optional, Union, Dict, List
 
 from model.consumables import Consumable
 from model.creature import Creature, Stat
@@ -21,7 +20,7 @@ class Qualifier:
     SMART = 'smart'
     LUCKY = 'lucky'
 
-    def __init__(self, name, effect) -> None:
+    def __init__(self, name, effect):
         self.name: str = name
         self.effect: str = effect
 
@@ -48,7 +47,7 @@ class Player(Creature):
                  speed:     int,
                  precision: int,
                  mental:    int
-                 ) -> None:
+                 ):
         super().__init__(name)
         self.heath = Stat(10)
 
@@ -61,11 +60,12 @@ class Player(Creature):
         self.expertise: Optional[str] = None
         self.signature: Optional[str] = None
 
-        self.weapons: Dict[str, Weapon] = dict()
+        self.weapons: Dict[str, List[Weapon]] = dict()
         self._free_hands = 2
         self.equipment: Optional[Equipment] = None
         self.props: Dict[str, Equipment] = dict()
-        self.consumables: Dict[str, Consumable] = dict()
+        self.quick_access_consumables: Dict[str, List[Consumable]] = dict()
+        self.inventory: Dict[str, List[Union[Weapon, Equipment, Consumable]]] = dict()
 
     def __str__(self) -> str:
         return '{name} ({strength} • {speed} • {precision} • {mental})'\
@@ -75,8 +75,9 @@ class Player(Creature):
         return f'''
         === {self.name} ===
         Qualifier: {self.qualifier if self.qualifier else 'TO BE DETERMINED'}
-        {f"""Expertise: {self.expertise}
-        ------------""" if self.expertise else ''}
+        {f"Expertise: {self.expertise}" if self.expertise else ''}
+        {f"""Signature move: {self.signature}
+        ------------""" if self.signature else ''}
         Strength:  {self.strength}
         Speed:     {self.speed}
         Precision: {self.precision}
@@ -84,16 +85,31 @@ class Player(Creature):
         ------------
         Wields: {"""
           • """ + """;
-          • """.join(map(str, self.weapons)) if self.weapons else "nothing"}
+          • """.join([
+                f'{len(category)} {name}'
+                for name, category in self.weapons
+            ]) if self.weapons else "nothing"}
         Wears: {self.equipment if self.equipment else 'nothing'}
         Props: {"""
           • """ + """;
-          • """.join(map(str, self.props)) if self.props else 'none'}
-        {f'Signature move: {self.signature}' if self.signature else ''}
+          • """.join(self.props.keys()) if self.props else 'none'}
+        ------------
+        Consumables: {"""
+          • """ + """;
+          • """.join([
+                f'{len(category)} {name}'
+                for name, category in self.quick_access_consumables
+            ]) if self.quick_access_consumables else "none"}
+        Inventory: {"""
+          • """ + """;
+          • """.join([
+                f'{len(category)} {name}'
+                for name, category in self.inventory
+            ]) if self.inventory else "empty"}
         ============
         '''
 
-    def equip(self, item: Union[Weapon, Equipment]) -> None:
+    def equip(self, item: Union[Weapon, Equipment]):
         """Equip the player with <item> if possible, raises an exception otherwise."""
         if isinstance(item, Equipment):
             if self.equipment is not None:
@@ -107,42 +123,40 @@ class Player(Creature):
                 raise Exception("This player cannot hold this weapon !"
                                 "Use 'unequip' to ditch one of your weapons.")
             self._free_hands -= hands_required
-            self.weapons[item.name] = item
+            if item.name not in self.weapons:
+                self.weapons[item.name] = []
+            self.weapons[item.name].append(item)
 
-    def unequip(self, item_name: str) -> Union[Weapon, Equipment]:
-        """Drop the specified weapon from the player's hands or the equipment they are wearing.
+    def unequip(self, item_name: str):
+        """Place the specified item in this player's inventory.
 
-        Return the weapon that was removed if such a weapon was in this player's hands.
-        Warning: the returned weapon should be retrieved by the caller, else
-        the object reference would be lost.
+        Looks for the item in this player's hands and his equipment.
         """
         if self.equipment is not None and item_name == self.equipment.name:
             removed_item = self.equipment
             self.equipment = None
 
         elif item_name in self.weapons:
-            removed_item = self.weapons[item_name]
+            removed_item = self.weapons[item_name].pop()
+            if self.weapons[item_name] == []:
+                self.weapons.pop(item_name)
+
             self._free_hands += 2 if removed_item.two_handed else 1
 
         else:
             raise Exception('This player is not wielding any weapon'
                             'or wearing any equipment with that name.')
 
-        return removed_item
+        if item_name not in self.inventory:
+            self.inventory[item_name] = []
+        self.inventory[item_name].append(removed_item)
 
-    def use(self, consumable: Union[Consumable, int, str]):
-        if isinstance(consumable, Consumable):
-            if consumable not in self.consumables:
-                raise Exception('This player does not have this consumable.')
-            self.consumables.remove(consumable)
-        elif isinstance(consumable, int):
-            consumable = self.consumables.pop(consumable)
-        elif isinstance(consumable, str):
-            for item in self.consumables:
-                if item.name == consumable:
-                    consumable = item
-                    self.consumables.remove(item)
-                    break
+    def use(self, consumable_name: str):
+        if consumable_name not in self.quick_access_consumables:
+            raise Exception('This player does not have any consumable with that name.')
+        consumable = self.quick_access_consumables[consumable_name].pop()
+        if self.quick_access_consumables[consumable_name] == []:
+            self.quick_access_consumables.pop(consumable_name)
         consumable.use()
 
     def get_health(self) -> Stat:
@@ -152,7 +166,7 @@ class Player(Creature):
         total = 0
         if self.equipment is not None:
             total += self.equipment.armor
-        for piece in self.props:
+        for piece in self.props.values():
             total += piece.armor
 
         return total
@@ -165,7 +179,7 @@ class Player(Creature):
         return self._qualifier
 
     @qualifier.setter
-    def qualifier(self, value: Optional[Qualifier]) -> None:
+    def qualifier(self, value: Optional[Qualifier]):
         corresponding_stat = {
             Qualifier.STRONG: self.strength,
             Qualifier.FAST: self.speed,
