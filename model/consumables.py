@@ -50,18 +50,18 @@ class BasicPotion(Consumable):
         return f'Healed {target.name} for {BasicPotion.HEAL_AMOUNT} HP.'
 
 
-class SummonningStone(Consumable):
-    DEPLETION_CRETERIA = "The creature can be called back and summunned again as long as it's not killed."
+class SummoningStone(Consumable):
+    DEPLETION_CRITERIA = "The creature can be called back and summoned again as long as it's not killed."
 
     def __init__(self, creature: NPC):
         self.creature = creature
         self.creature.add_on_death_listener(self.depletes)
 
-        name = 'Summonning stone'
-        effect = f'summons {creature}. {SummonningStone.DEPLETION_CRETERIA}'
+        name = 'Summoning stone'
+        effect = f'summons {creature}. {SummoningStone.DEPLETION_CRETERIA}'
         super().__init__(name, effect)
 
     def use(self) -> str:
         if self.depleted:
             raise Exception(f"This stone's {self.creature.name} is dead and cannot be summoned again.")
-        return f'Summonned {self.creature}. {SummonningStone.DEPLETION_CRETERIA}'
+        return f'Summoned {self.creature}. {SummoningStone.DEPLETION_CRETERIA}'

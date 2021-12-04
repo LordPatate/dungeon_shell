@@ -1,5 +1,5 @@
 from factories.consumables_factories import (
-    BombFactory, ConsumableFactory, PotionFactory, ScrollFactory, SummonningStoneFactory
+    BombFactory, ConsumableFactory, PotionFactory, ScrollFactory, SummoningStoneFactory
 )
 from factories.factory import GenericFactory
 from model.consumables import Consumable
@@ -13,4 +13,4 @@ consumable_factory = ConsumableFactory(Consumable.RESOURCE_FILE, Consumable)
 potion_factory = PotionFactory()
 bomb_factory = BombFactory()
 scroll_factory = ScrollFactory()
-summonning_stone_factory = SummonningStoneFactory(npc_factory)
+summoning_stone_factory = SummoningStoneFactory(npc_factory)

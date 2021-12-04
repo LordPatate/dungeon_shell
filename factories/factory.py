@@ -3,7 +3,7 @@ import random
 from typing import Dict, Tuple
 
 
-class GenericFactory():
+class GenericFactory:
     def __init__(self, json_file: str, target_class: type):
         with open(json_file) as f:
             self.root: Dict = json.load(f)
