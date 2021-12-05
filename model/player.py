@@ -1,7 +1,7 @@
 from enum import Enum, auto
 from typing import Optional, Union, Dict
 
-from model.container import Container
+from utils import Container
 from model.creature import Creature, Stat
 from model.equipment import Equipment, Weapon
 

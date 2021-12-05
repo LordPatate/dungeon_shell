@@ -2,7 +2,7 @@ import itertools
 import unittest
 import pytest
 
-from model.container import Container
+from utils import Container
 
 
 class Item:
