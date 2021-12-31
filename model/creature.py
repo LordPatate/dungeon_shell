@@ -9,6 +9,7 @@ class Stat:
     * cur: The current 'remaining' points in this stat
     """
 
+    # noinspection PyShadowingBuiltins
     def __init__(self, max: int) -> None:
         self._max: int = max
         self._cur: int = max

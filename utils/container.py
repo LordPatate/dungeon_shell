@@ -14,6 +14,7 @@ class Container(Generic[T]):
 
     def remove(self, name: str) -> T:
         e = self.holder[name].pop()
+        # noinspection PySimplifyBooleanCheck
         if self.holder[name] == []:
             self.holder.pop(name)
         return e

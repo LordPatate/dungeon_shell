@@ -7,13 +7,13 @@
         "invisibility": {"effect":"become invisible for a very short time"},
         "transformation": {"effect":"transform into a desired up-to-level-3 creature for several minutes"},
         "night vision": {"effect":"see in the dark for several minutes"},
-        "resurection": {"effect":"resurect a recently dead creature"}
+        "resurrection": {"effect":"resurrect a recently dead creature"}
     },
     "bombs": {
         "classic": {"effect": "explodes dealing 8 damage at point of impact and 4 in a small area; causes minor destruction"},
         "shrapnel": {"effect": "shatter into plenty of small sharp pieces of glass and metal, dealing 6 damage to all creatures in a large radius"},
         "poison": {"effect":"liberates a toxic cloud gas that dissipates quickly, poisoning all creatures in a large radius"},
-        "flame": {"effect":"spill ignated oil all targets within a small radius, dealing them 4 damage each turn"},
+        "flame": {"effect":"spill ignited oil all targets within a small radius, dealing them 4 damage each turn"},
         "smoke": {"effect":"produce a thick smoke screen big enough to fill a small room"},
         "flash": {"effect":"emits a flash of brilliant light, blinding for several seconds anyone looking at it"}
     }

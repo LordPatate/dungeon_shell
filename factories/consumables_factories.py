@@ -19,6 +19,7 @@ class PotionFactory(GenericFactory):
     def __init__(self):
         super().__init__(Consumable.RESOURCE_FILE, Consumable)
 
+    # noinspection PyMethodMayBeStatic
     def random_basic(self) -> BasicPotion:
         return BasicPotion(random.choice(list(PlayerStat.__members__.keys())))
 

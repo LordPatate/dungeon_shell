@@ -24,7 +24,7 @@ class GenericFactory:
         else:
             candidates = self.root[category]
 
-        tuple: Tuple[str, Dict] = random.choice(list(candidates.items()))
-        name, obj = tuple
+        _tuple: Tuple[str, Dict] = random.choice(list(candidates.items()))
+        name, obj = _tuple
 
         return self.target_class(name, **obj)
