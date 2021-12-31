@@ -2,7 +2,6 @@
     "basic equipment": {
         "backpack": {"abilities": "allows to transport one more weapon and unlimited consumables in inventory; accessing the backpack is an action"},
         "cape": {"abilities":"+3 to stealth rolls"},
-        "leather jerkin": {"armor":1},
-        "chainmail": {"armor":2}
+        "leather jerkin": {"armor":1}
     }
 }

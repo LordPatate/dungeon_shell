@@ -1,9 +1,10 @@
 from enum import Enum, auto
-from typing import Optional, Union, Dict
+from typing import Dict, Optional, Union
 
-from utils import Container
+from model.consumables import Consumable
 from model.creature import Creature, Stat
 from model.equipment import Equipment, Weapon
+from utils import Container
 
 
 class PlayerStat(Enum):
@@ -14,15 +15,29 @@ class PlayerStat(Enum):
 
 
 class Qualifier:
+    _BUFF_AMOUNT = 2
+
     STRONG = 'strong'
     FAST = 'fast'
     SHARP = 'sharp'
     SMART = 'smart'
     LUCKY = 'lucky'
 
-    def __init__(self, name, effect):
+    corresponding_stat = {
+        STRONG: PlayerStat.STRENGTH,
+        FAST: PlayerStat.SPEED,
+        SHARP: PlayerStat.PRECISION,
+        SMART: PlayerStat.MENTAL
+    }
+
+    def __init__(self, name, effect=None):
         self.name: str = name
-        self.effect: str = effect
+        if effect:
+            self.effect: str = effect
+        else:
+            if name not in Qualifier.corresponding_stat:
+                raise ValueError("You must either specify an effect or use a standard qualifier name")
+            self.effect = f'+{Qualifier._BUFF_AMOUNT} {Qualifier.corresponding_stat[name]}'
 
     def __str__(self) -> str:
         return f'{self.name} {f"({self.effect})" if self.effect else ""}'
@@ -51,10 +66,11 @@ class Player(Creature):
         super().__init__(name)
         self.heath = Stat(10)
 
-        self.strength = Stat(strength)
-        self.speed = Stat(speed)
-        self.precision = Stat(precision)
-        self.mental = Stat(mental)
+        self.stats: Dict[PlayerStat, Stat] = dict()
+        self.stats[PlayerStat.STRENGTH] = Stat(strength)
+        self.stats[PlayerStat.SPEED] = Stat(speed)
+        self.stats[PlayerStat.PRECISION] = Stat(precision)
+        self.stats[PlayerStat.MENTAL] = Stat(mental)
 
         self._qualifier: Optional[Qualifier] = None
         self.expertise: Optional[str] = None
@@ -64,12 +80,12 @@ class Player(Creature):
         self._free_hands = 2
         self.equipment: Optional[Equipment] = None
         self.props: Dict[str, Equipment] = dict()
-        self.quick_access_consumables = Container['Consumable']()
-        self.inventory = Container[Union[Weapon, Equipment, 'Consumable']]()
+        self.quick_access_consumables = Container[Consumable]()
+        self.inventory = Container[Union[Weapon, Equipment, Consumable]]()
 
     def __str__(self) -> str:
-        return '{name} ({strength} • {speed} • {precision} • {mental})'\
-            .format(**self.__dict__)
+        return '{name} ({STRENGTH} • {SPEED} • {PRECISION} • {MENTAL})'\
+            .format(name=self.name, **{item.name: value for item, value in self.stats.items()})
 
     def details(self) -> str:
         return f'''
@@ -78,10 +94,10 @@ class Player(Creature):
         {f"Expertise: {self.expertise}" if self.expertise else ''}
         {f"""Signature move: {self.signature}
         ------------""" if self.signature else ''}
-        Strength:  {self.strength}
-        Speed:     {self.speed}
-        Precision: {self.precision}
-        Mental:    {self.mental}
+        Strength:  {self.stats[PlayerStat.STRENGTH]}
+        Speed:     {self.stats[PlayerStat.SPEED]}
+        Precision: {self.stats[PlayerStat.PRECISION]}
+        Mental:    {self.stats[PlayerStat.MENTAL]}
         ------------
         Wields: {"""
           • """ + """
@@ -153,24 +169,22 @@ class Player(Creature):
 
         return total
 
-    def get_stat(self, name: str) -> Stat:
-        return self.__dict__[name]
+    def get_stat(self, which: PlayerStat) -> Stat:
+        return self.stats[which]
 
     @property
     def qualifier(self) -> Optional[Qualifier]:
         return self._qualifier
 
     @qualifier.setter
-    def qualifier(self, value: Optional[Qualifier]):
-        corresponding_stat = {
-            Qualifier.STRONG: self.strength,
-            Qualifier.FAST: self.speed,
-            Qualifier.SHARP: self.precision,
-            Qualifier.SMART: self.mental
-        }
+    def qualifier(self, value: Union[Qualifier, str]):
+        if isinstance(value, str):
+            value = Qualifier(value)
         if self._qualifier is not None and \
-           self._qualifier.name in corresponding_stat.keys():
-            corresponding_stat[self._qualifier.name].max -= 2
-        if value is not None and value.name in corresponding_stat.keys():
-            corresponding_stat[value.name].max += 2
+                self._qualifier.name in Qualifier.corresponding_stat:
+            corresponding = Qualifier.corresponding_stat[self._qualifier.name]
+            self.stats[corresponding].max -= 2
+        if value.name in Qualifier.corresponding_stat:
+            corresponding = Qualifier.corresponding_stat[value.name]
+            self.stats[corresponding].max += 2
         self._qualifier = value
