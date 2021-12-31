@@ -37,7 +37,7 @@ class Qualifier:
         else:
             if name not in Qualifier.corresponding_stat:
                 raise ValueError("You must either specify an effect or use a standard qualifier name")
-            self.effect = f'+{Qualifier._BUFF_AMOUNT} {Qualifier.corresponding_stat[name]}'
+            self.effect = f'+{Qualifier._BUFF_AMOUNT} {Qualifier.corresponding_stat[name].name.lower()}'
 
     def __str__(self) -> str:
         return f'{self.name} {f"({self.effect})" if self.effect else ""}'
