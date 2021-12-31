@@ -28,3 +28,8 @@ def test_create(factory):
     for category in root:
         for name in root[category]:
             assert factory.from_name(name, category)
+
+
+def test_special_potions():
+    for name in potion_factory.get_special_names():
+        assert potion_factory.from_name(name)

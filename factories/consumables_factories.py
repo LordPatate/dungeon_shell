@@ -26,6 +26,9 @@ class PotionFactory(GenericFactory):
     def from_name(self, name: str, _=None) -> Consumable:
         return super().from_name(name, PotionFactory.CATEGORY_SPECIAL)
 
+    def get_special_names(self):
+        return self._root[PotionFactory.CATEGORY_SPECIAL].keys()
+
     def random_special(self) -> Consumable:
         return super().random(category=PotionFactory.CATEGORY_SPECIAL)
 
