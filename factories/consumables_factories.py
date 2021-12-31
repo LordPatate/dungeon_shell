@@ -42,6 +42,9 @@ class BombFactory(GenericFactory):
     def from_name(self, name: str, _=None) -> Consumable:
         return super().from_name(name, BombFactory.CATEGORY_BOMBS)
 
+    def get_bomb_names(self):
+        return self._root[BombFactory.CATEGORY_BOMBS].keys()
+
     def random(self, _=None):
         return super().random(category=BombFactory.CATEGORY_BOMBS)
 

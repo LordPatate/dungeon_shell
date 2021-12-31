@@ -21,7 +21,7 @@ factories = list(resource_files.keys())
 
 
 @pytest.mark.parametrize('factory', factories[:4])
-def test_create(factory):
+def test_from_name(factory):
     file = f'./resources/{resource_files[factory]}'
     with open(file) as f:
         root = json.load(f)
@@ -30,6 +30,11 @@ def test_create(factory):
             assert factory.from_name(name, category)
 
 
-def test_special_potions():
+def test_special_potions_from_name():
     for name in potion_factory.get_special_names():
         assert potion_factory.from_name(name)
+
+
+def test_bombs_from_name():
+    for name in bomb_factory.get_bomb_names():
+        assert bomb_factory.from_name(name)
