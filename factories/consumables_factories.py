@@ -4,7 +4,7 @@ import random
 from typing import Dict
 
 from factories.factory import GenericFactory
-from model.consumables import Consumable, BasicPotion, SummoningStone
+from model.consumables import Consumable, HealingPotion, SummoningStone
 from model.player import PlayerStat
 
 
@@ -20,8 +20,8 @@ class PotionFactory(GenericFactory):
         super().__init__(Consumable.RESOURCE_FILE, Consumable)
 
     # noinspection PyMethodMayBeStatic
-    def random_basic(self) -> BasicPotion:
-        return BasicPotion(random.choice(list(PlayerStat.__members__.keys())))
+    def healing(self) -> HealingPotion:
+        return HealingPotion()
 
     def from_name(self, name: str, _=None) -> Consumable:
         return super().from_name(name, PotionFactory.CATEGORY_SPECIAL)

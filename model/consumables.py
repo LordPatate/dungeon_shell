@@ -1,6 +1,5 @@
 from model.creature import Creature
 from model.npc import NPC
-from model.player import Player, PlayerStat
 
 
 class Consumable:
@@ -25,16 +24,12 @@ class Consumable:
         self.depleted = True
 
 
-class BasicPotion(Consumable):
+class HealingPotion(Consumable):
     HEAL_AMOUNT = 6
 
-    def __init__(self, kind: str):
-        if kind not in PlayerStat.__members__.keys():
-            raise ValueError(f"{kind} is not a valid kind for basic potions")
-        self.kind = kind
-
-        name = f'{kind} potion'
-        effect = f'restores up to {BasicPotion.HEAL_AMOUNT} {self.kind}'
+    def __init__(self):
+        name = 'Healing potion'
+        effect = f'restores up to {HealingPotion.HEAL_AMOUNT} health'
         super().__init__(name, effect)
 
     def use(self, target: Creature = None) -> str:
@@ -42,12 +37,8 @@ class BasicPotion(Consumable):
         if target is None:
             raise ValueError("'target' argument required for potions")
 
-        if isinstance(target, Player):
-            target.get_stat(self.kind).cur += BasicPotion.HEAL_AMOUNT
-            return f'Restored {BasicPotion.HEAL_AMOUNT} {self.kind} to {target.name}'
-
-        target.heal(BasicPotion.HEAL_AMOUNT)
-        return f'Healed {target.name} for {BasicPotion.HEAL_AMOUNT} HP.'
+        target.heal(HealingPotion.HEAL_AMOUNT)
+        return f'Healed {target.name} for {HealingPotion.HEAL_AMOUNT} health.'
 
 
 class SummoningStone(Consumable):
