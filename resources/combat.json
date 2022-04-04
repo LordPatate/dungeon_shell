@@ -1,0 +1,58 @@
+{
+    "actions": {
+        "melee attack": {
+            "roll": "strength",
+            "requires": "melee weapon",
+            "effect": "deal damage to target"
+        },
+        "sneak attack": {
+            "roll": "speed",
+            "requires": "cape, armor <= 1 or nothing (no backpack)",
+            "effect": "critical hit to target"
+        },
+        "ranged attack": {
+            "roll": "precision",
+            "requires": "ranged weapon",
+            "effect": "deal damage to target"
+        },
+        "spell": {
+            "roll": "mental",
+            "requires": "free hand or magical item",
+            "effect": "cast a spell on target with a level equal to caster's level"
+        }
+    },
+    "reactions": {
+        "block": {
+            "roll": "strength",
+            "requires": "shield",
+            "effect": "blocks a number of damage that varies with the shield quality"
+        },
+        "dodge": {
+            "roll": "speed",
+            "effect": "side-step out of the way, nullifying the damage"
+        },
+        "deflect": {
+            "roll": "precision",
+            "requires": "weapon",
+            "effect": "redirect the attack, nullifying the damage"
+        }
+    },
+    "efforts": {
+        "power through": {
+            "cost": "1 strength",
+            "effect": "+1 damage"
+        },
+        "dash": {
+            "cost": "3 speed",
+            "effect": "one extra action this turn"
+        },
+        "bull's eye": {
+            "cost": "3 precision",
+            "effect": "critical hit"
+        },
+        "focus": {
+            "cost": "1 mental",
+            "effect": "spell level +1"
+        }
+    }
+}
