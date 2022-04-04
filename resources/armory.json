@@ -9,7 +9,8 @@
         "bow": {"tpye": "ranged", "damage":4, "two_handed":true},
         "crossbow": {"tpye": "ranged", "damage":5, "two_handed":true, "abilities":"needs to be reloaded for 1 turn"},
         "light crossbow": {"tpye": "ranged", "damage":4, "abilities":"needs to be reloaded for 1 turn"},
-        "wand": {"tpye": "magic", "abilities":"spell level +1"},
-        "grimoire": {"tpye": "magic", "abilities":"spells success is determined by your maximum of Mental"}
+        "wand": {"tpye": "magic", "abilities":"spell level +1 (not cumulative)"},
+        "grimoire": {"tpye": "magic", "abilities":"spells success is determined by your maximum of Mental"},
+        "wizard staff": {"type": "magic", "two_handed": true, "abilities": "spell level +2"}
     }
 }
