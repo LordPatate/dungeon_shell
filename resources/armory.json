@@ -1,15 +1,14 @@
 {
     "starting weapons": {
-        "shield": {"damage":0, "abilities":"blocks 4 damage, +3 to deflect rolls"},
+        "shield": {"damage":0, "abilities":"+3 to block and deflect rolls"},
         "sword": {"damage":4},
-        "club": {"damage":5, "critical":"stun"},
+        "club": {"damage":4, "critical":"6 and stun"},
         "dagger": {"damage":3, "abilities":"can be used once in addition to your normal action each turn"},
-        "axe": {"damage":6, "critical":"chop limb"},
-        "spear": {"damage":4, "abilities":"you can attack while defending in melee"},
-        "quarterstaff": {"damage":5, "two_handed":true, "critical":"gain one extra action", "abilities":"+3 to deflect rolls"},
+        "axe": {"damage":5, "two_handed":true, "critical":"8 and chop limb"},
+        "spear": {"damage":4, "abilities":"throwable at medium range"},
         "bow": {"damage":4, "two_handed":true},
-        "crossbow": {"damage":6, "two_handed":true, "abilities":"can only be used once every two turns"},
-        "light crossbow": {"damage":5, "abilities":"can only be used once every two turns"},
+        "crossbow": {"damage":5, "two_handed":true, "abilities":"needs to be reloaded for 1 turn"},
+        "light crossbow": {"damage":4, "abilities":"needs to be reloaded for 1 turn"},
         "wand": {"damage":0, "abilities":"spells cost 2 less"},
         "grimoire": {"damage":0, "abilities":"spells success is determined by your maximum of Mental"}
     }

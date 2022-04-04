@@ -15,6 +15,7 @@
         "poison": {"effect":"liberates a toxic cloud gas that dissipates quickly, poisoning all creatures in a large radius"},
         "flame": {"effect":"spill ignited oil all targets within a small radius, dealing them 4 damage each turn"},
         "smoke": {"effect":"produce a thick smoke screen big enough to fill a small room"},
-        "flash": {"effect":"emits a flash of brilliant light, blinding for several seconds anyone looking at it"}
+        "flash": {"effect":"emits a flash of brilliant light, blinding for several seconds anyone looking at it"},
+        "sonic": {"effect":"detonates with a high-pitch loud noise, stunning all creatures in a large radius; those at the center might pass out"}
     }
 }
