@@ -46,7 +46,7 @@ class Qualifier:
 class Player(Creature):
     """A playable character.
 
-    Starts with 10 health.
+    Starts with 10 health. Considered as a level 4 creature.
     Playable characters have 4 other stats:
     * Strength
     * Speed
@@ -63,7 +63,7 @@ class Player(Creature):
                  precision: int,
                  mental:    int
                  ):
-        super().__init__(name)
+        super().__init__(name, level=4)
         self.heath = Stat(10)
 
         self.stats: Dict[PlayerStat, Stat] = dict()

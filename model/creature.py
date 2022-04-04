@@ -42,8 +42,9 @@ class Stat:
 class Creature:
     """A creature that can be hurt, healed and killed."""
 
-    def __init__(self, name):
-        self.name = name
+    def __init__(self, name, level):
+        self.name: str = name
+        self.level: int = level
         self._on_death_listeners: List[Callable] = []
 
     def hurt(self, damage: int):

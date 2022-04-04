@@ -22,8 +22,7 @@ class NPC(Creature):
                  armor: int = 0,
                  abilities: str = None
                  ) -> None:
-        super().__init__(name)
-        self.level: int = level
+        super().__init__(name, level)
         self.damage: int = level if damage == -1 else damage
         if isinstance(health, int):
             health = Stat(health)
