@@ -1,24 +1,24 @@
 {
     "actions": {
-        "melee attack": {
+        "strike": {
             "roll": "strength",
             "requires": "melee weapon",
-            "effect": "deal damage to target"
+            "effect": "hit a target within melee range"
         },
-        "sneak attack": {
+        "sneak": {
             "roll": "speed",
             "requires": "cape, armor <= 1 or nothing (no backpack)",
-            "effect": "critical hit to target"
+            "effect": "land a critical hit on a target with any weapon"
         },
-        "ranged attack": {
+        "shoot": {
             "roll": "precision",
             "requires": "ranged weapon",
-            "effect": "deal damage to target"
+            "effect": "fire a projectile at a target"
         },
-        "spell": {
+        "cast": {
             "roll": "mental",
             "requires": "free hand or magical item",
-            "effect": "cast a spell on target with a level equal to caster's level"
+            "effect": "cast a spell on a target with a level equal to caster's level"
         }
     },
     "reactions": {
@@ -29,24 +29,24 @@
         },
         "dodge": {
             "roll": "speed",
-            "effect": "side-step out of the way, nullifying the damage"
+            "effect": "jump out of the way, nullifying the damage"
         },
         "deflect": {
             "roll": "precision",
-            "requires": "weapon",
+            "requires": "melee weapon or shield",
             "effect": "redirect the attack, nullifying the damage"
         }
     },
     "efforts": {
-        "power through": {
+        "force": {
             "cost": "1 strength",
             "effect": "+1 damage"
         },
-        "dash": {
+        "haste": {
             "cost": "3 speed",
             "effect": "one extra action this turn"
         },
-        "bull's eye": {
+        "aim": {
             "cost": "3 precision",
             "effect": "critical hit"
         },
