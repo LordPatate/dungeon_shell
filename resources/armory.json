@@ -21,6 +21,7 @@
     },
     "rare weapons": {
         "reflecting shield": {"type": "shield", "block": 5, "abilities": "attacks completely blocked are reflected back to the attacker"},
+        "lightning spear": {"type": "piercing", "damage": 5, "abilities": "throwable at medium range; teleports the thrower to the point of impact"},
         "energy sword": {"type": "melee", "two_handed": true, "damage": 6, "critical": 0, "abilities": "no rolls required"},
         "pistol": {"type": "ranged", "damage": 9, "abilities": "ignores armor", "reload": 3},
         "orb": {"type": "magic", "two_handed": true, "abilities": "spells can be charged up over multiple turns, doubling the level every turn"}
