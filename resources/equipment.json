@@ -1,7 +1,21 @@
 {
     "basic equipment": {
-        "backpack": {"abilities": "allows to transport one more weapon and unlimited consumables in inventory; accessing the backpack is an action"},
-        "cape": {"abilities":"+3 to stealth rolls"},
-        "leather jerkin": {"armor":1}
+        "leather jerkin": {"armor": 1},
+        "traveller cloak": {"stealth": 3},
+        "backpack": {"extra weapon": 1, "extra consumable": 3},
+        "fancy clothes": {"social": 4, "stealth": -1}
+    },
+    "military equipment": {
+        "chainmail": {"armor": 2, "stealth": -1, "dodge": -1},
+        "plate armor": {"armor": 3, "stealth": -3, "dodge": -3},
+        "assassin cloak": {"stealth": 4, "dodge": 1},
+        "baldric": {"extra weapon": 2, "extra consumable": 5},
+        "mage robe": {"spell level bonus": 1, "social": 4}
+    },
+    "rare equipment": {
+        "dragon skin": {"armor": 2, "abilities": "fire immunity"},
+        "vampire cloak": {"stealth": 3, "abilities": "transform into a bat at will"},
+        "invisibility cloak": {"stealth": 9, "abilities": "invisibility"},
+        "santa's sack": {"abilities": "allows to carry limitless amounts of items"}
     }
 }
