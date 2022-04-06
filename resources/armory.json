@@ -1,16 +1,29 @@
 {
     "starting weapons": {
-        "wooden shield": {"type": "shield", "abilities":"blocks 4 damage"},
-        "sword": {"type": "melee", "damage":4},
-        "club": {"tpye": "melee", "damage":4, "critical":"6 and stun"},
-        "dagger": {"tpye": "melee", "damage":3, "abilities":"can be used once in addition to your normal action each turn"},
-        "axe": {"tpye": "melee", "damage":5, "two_handed":true, "critical":"8 and chop limb"},
-        "spear": {"tpye": "melee", "damage":4, "abilities":"throwable at medium range"},
-        "bow": {"tpye": "ranged", "damage":4, "two_handed":true},
-        "crossbow": {"tpye": "ranged", "damage":5, "two_handed":true, "abilities":"needs to be reloaded for 1 turn"},
-        "light crossbow": {"tpye": "ranged", "damage":4, "abilities":"needs to be reloaded for 1 turn"},
-        "wand": {"tpye": "magic", "abilities":"spell level +1 (not cumulative)"},
-        "grimoire": {"tpye": "magic", "abilities":"spells success is determined by your maximum of Mental"},
-        "wizard staff": {"type": "magic", "two_handed": true, "abilities": "spell level +2"}
+        "wooden shield": {"type": "shield", "block": 4},
+        "sword": {"type": "melee", "damage": 4},
+        "mace": {"type": "melee", "two_handed": true, "damage": 5, "abilities": "stun"},
+        "dagger": {"type": "precision", "damage": 3},
+        "bow": {"type": "ranged", "two_handed": true, "damage": 4},
+        "wand": {"type": "magic", "spell level": 1},
+        "wizard staff": {"type": "magic", "two_handed": true, "spell level": 2}
+    },
+    "common weapons": {
+        "spear": {"type": "precision", "damage": 3, "abilities": "throwable at medium range"},
+        "light crossbow": {"type": "ranged", "damage": 4, "reload": 1},
+        "grimoire": {"type": "magic", "abilities": "spells success is determined by your maximum of Mental"}
+    },
+    "military weapons": {
+        "steel shield": {"type": "shield", "block": 6},
+        "war axe": {"type": "melee", "two_handed": true, "damage": 6, "abilities": "critical hits can chop limbs"},
+        "rapier": {"type": "precision", "damage": 3, "critical": 9},
+        "crossbow": {"type": "ranged", "two_handed": true, "damage": 6, "reload": 1}
+    },
+    "rare weapons": {
+        "reflecting shield": {"type": "shield", "block": 5, "abilities": "attacks completely blocked are reflected back to the attacker"},
+        "energy sword": {"type": "melee", "two_handed": true, "damage": 6, "critical": 0, "abilities": "no rolls required"},
+        "quickfire bow": {"type": "ranged", "two_handed": true, "damage": 4, "extra attack": 1},
+        "mechanical light crossbow": {"type": "ranged", "damage": 5},
+        "orb": {"type": "magic", "spell level": 2, "abilities": "restores 1 mental per turn"}
     }
 }
