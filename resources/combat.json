@@ -12,18 +12,18 @@
         },
         "stab": {
             "roll": "precision",
-            "requires": "precision weapon",
-            "effect": "hit a target within melee range, ignores armor"
+            "requires": "piercing weapon",
+            "effect": "ignores a target's armor to inflict a precise wound at melee range"
         },
         "shoot": {
             "roll": "precision",
             "requires": "ranged weapon",
-            "effect": "fire a projectile at a target"
+            "effect": "fire a projectile at a target at medium range"
         },
         "cast": {
             "roll": "mental",
             "requires": "free hand or magical item",
-            "effect": "cast a spell on a target with a level equal to caster's level"
+            "effect": "cast a spell on a target with a level equal to caster's level at short range"
         }
     },
     "reactions": {
@@ -38,7 +38,7 @@
         },
         "deflect": {
             "roll": "precision",
-            "requires": "melee weapon or shield",
+            "requires": "melee weapon, piercing weapon or shield",
             "effect": "redirect the attack, nullifying the damage"
         }
     },

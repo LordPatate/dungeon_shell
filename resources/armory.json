@@ -2,28 +2,27 @@
     "starting weapons": {
         "wooden shield": {"type": "shield", "block": 4},
         "sword": {"type": "melee", "damage": 4},
-        "mace": {"type": "melee", "two_handed": true, "damage": 5, "abilities": "stun"},
-        "dagger": {"type": "precision", "damage": 3},
+        "dagger": {"type": "piercing", "damage": 3},
         "bow": {"type": "ranged", "two_handed": true, "damage": 4},
-        "wand": {"type": "magic", "spell level": 1},
-        "wizard staff": {"type": "magic", "two_handed": true, "spell level": 2}
+        "wand": {"type": "magic", "spell level": 1}
     },
     "common weapons": {
-        "spear": {"type": "precision", "damage": 3, "abilities": "throwable at medium range"},
+        "mace": {"type": "melee", "two_handed": true, "damage": 5, "abilities": "stun"},
+        "spear": {"type": "piercing", "damage": 3, "abilities": "throwable at short range"},
         "light crossbow": {"type": "ranged", "damage": 4, "reload": 1},
-        "grimoire": {"type": "magic", "abilities": "spells success is determined by your maximum of Mental"}
+        "wizard staff": {"type": "magic", "two_handed": true, "spell level": 2}
     },
     "military weapons": {
         "steel shield": {"type": "shield", "block": 6},
         "war axe": {"type": "melee", "two_handed": true, "damage": 6, "abilities": "critical hits can chop limbs"},
-        "rapier": {"type": "precision", "damage": 3, "critical": 9},
-        "crossbow": {"type": "ranged", "two_handed": true, "damage": 6, "reload": 1}
+        "rapier": {"type": "piercing", "damage": 3, "critical": 9},
+        "crossbow": {"type": "ranged", "two_handed": true, "damage": 6, "reload": 1},
+        "grimoire": {"type": "magic", "abilities": "spells success is determined by your maximum of Mental"}
     },
     "rare weapons": {
         "reflecting shield": {"type": "shield", "block": 5, "abilities": "attacks completely blocked are reflected back to the attacker"},
         "energy sword": {"type": "melee", "two_handed": true, "damage": 6, "critical": 0, "abilities": "no rolls required"},
-        "quickfire bow": {"type": "ranged", "two_handed": true, "damage": 4, "extra attack": 1},
-        "mechanical light crossbow": {"type": "ranged", "damage": 5},
-        "orb": {"type": "magic", "spell level": 2, "abilities": "restores 1 mental per turn"}
+        "pistol": {"type": "ranged", "damage": 9, "abilities": "ignores armor", "reload": 3},
+        "orb": {"type": "magic", "two_handed": true, "abilities": "spells can be charged up over multiple turns, doubling the level every turn"}
     }
 }
