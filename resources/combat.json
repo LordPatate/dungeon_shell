@@ -7,8 +7,13 @@
         },
         "sneak": {
             "roll": "speed",
-            "requires": "cape, armor <= 1 or nothing (no backpack)",
+            "requires": "not being seen",
             "effect": "land a critical hit on a target with any weapon"
+        },
+        "stab": {
+            "roll": "precision",
+            "requires": "precision weapon",
+            "effect": "hit a target within melee range, ignores armor"
         },
         "shoot": {
             "roll": "precision",
