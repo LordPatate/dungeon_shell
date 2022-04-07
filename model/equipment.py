@@ -1,4 +1,13 @@
-from typing import List, Optional, Union
+from enum import Enum, auto
+from typing import List, Optional
+
+
+class WeaponType(str, Enum):
+    SHIELD = auto()
+    MELEE = auto()
+    PIERCING = auto()
+    RANGED = auto()
+    MAGIC = auto()
 
 
 class Weapon:
@@ -12,27 +21,29 @@ class Weapon:
 
     RESOURCE_FILE = './resources/armory.json'
 
-    def __init__(self,
-                 name: str,
-                 damage: int,
-                 two_handed: bool = False,
-                 critical: Union[str, int] = None,
-                 abilities: str = None
-                 ) -> None:
+    def __init__(self, name: str, details: dict):
         self.name = name
-        self.two_handed = two_handed
-        self.damage = damage
-        self.critical = damage * 2 if critical is None else critical
-        self.abilities = abilities
+        self.type = WeaponType(details["type"])
+        self.two_handed = details.get("two_handed", False)
+        self.abilities = details.get("abilities")
+        self.block = details.get("block", 0)
+        self.damage = details.get("damage", 0)
+        self.critical = details.get("critical", self.damage * 2)
+        self.spell_level = details.get("spell level", 0)
+        self.reload = details.get("reload", 0)
 
     def __str__(self) -> str:
         description: List[str] = [
-            self.name
+            self.name,
+            self.type
         ]
-        if self.damage != 0:
-            description.append(f'{self.damage} damage')
-        if self.critical != 0:
-            description.append(f' (critical: {self.critical})')
+        if self.two_handed:
+            description.append("two handed")
+        stats = ("block", "damage", "critical", "spell_level", "reload", "abilities")
+        for stat in stats:
+            value = getattr(self, stat)
+            if value:
+                description.append(f"{stat}: {value}")
         if self.abilities is not None:
             description.append(self.abilities)
 
