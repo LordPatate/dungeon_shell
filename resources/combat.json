@@ -48,7 +48,7 @@
     },
     "efforts": {
         "force": {
-            "cost": "1 strength",
+            "cost": "2 strength",
             "effect": "+1 damage"
         },
         "haste": {
@@ -60,7 +60,7 @@
             "effect": "critical hit"
         },
         "focus": {
-            "cost": "1 mental",
+            "cost": "2 mental",
             "effect": "spell level +1"
         }
     }
