@@ -1,24 +1,32 @@
 {
-    "monsters": {
-        "wolf": {"level":1 },
-        "goblin": {"level":2, "damage":4, "health":4},
-        "goblin warlock": {"level":3, "damage":5, "health": 7, "abilities":"ranged attacks, nearby goblins deal more damage"},
+    "beasts": {
+        "wolf": {"level":1},
         "bear": {"level":4, "damage":3, "armor":1},
-        
-        "werewolf": {"level":6, "damage":4, "abilities":"attack twice per turn"},
-        "vampire": {"level":7, "damage":6, "health":18, "abilities":"teleportation, life drain, bat swarm summonning"}
+        "griffin": {"level": 5, "abilities": "flight"}
+    },
+    "monsters": {
+        "skeleton": {"level": 1},
+        "ghoul": {"level": 2, "damage": 3, "health": 5},
+        "wraith": {"level": 3, "damage": 0, "abilities": "mind magic; intangible; vulnerable to heat, light and raw magic"},
+        "werewolf": {"level":6, "damage":4, "abilities":"two actions per turn"},
+        "vampire": {"level":7, "damage":6, "health":18, "abilities":"bat transformation, life drain, bat swarm summonning"}
+    },
+    "goblins": {
+        "goblin": {"level":2, "damage":4, "health":4},
+        "goblin warleader": {"level":3, "damage":5, "health": 6, "armor": 1, "abilities":"nearby golbins deal 1 more damage"}
     },
     "humans": {
         "bandit": {"level":3},
-        "archer": {"level":4, "damage":6, "health":10},
-        "knight": {"level":5, "health":12, "armor":3}
+        "adventurer": {"level":4},
+        "knight": {"level":5},
+        "master": {"level": 6},
+        "warlock": {"level": 7}
     },
     "summonnables": {
-        "fairy": {"level":1, "damage":0, "abilities":"heal (2)"},
-        "imp": {"level":2, "damage":5, "health":3, "abilities":"ranged fire attacks"},
-        "phoenix": {"level":3, "health":6, "abilities":"immune to fire"},
-        "elemental": {"level":4, "abilities":"melee creature made of a specific magic type"},
-        "undead knight": {"level":5, "health":12, "armor":3},
-        "golem": {"level":6, "health":14, "armor":4}
+        "fairy": {"level":0, "health":1, "abilities":"heal (2)"},      
+        "imp": {"level":2, "damage":5, "health":3, "abilities":"raw magic"},
+        "elemental": {"level":4, "abilities":"fire, ice, wind or lightning magic (depending on elemental type)"},
+        "golem": {"level":5, "health":12, "armor":3},
+        "battle angel": {"level": 6, "damage": 5, "abilities": "flight, heal (7)"}
     }
 }
