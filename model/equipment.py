@@ -42,7 +42,7 @@ class Weapon:
 class Equipment:
     """A piece of equipment that can be worn by a player.
 
-    Equipment can be armor, backpack, capes, jewelry, hats, clothes, etc.
+    Equipment can be armor, backpack, cloaks, etc.
     It can provide armor, enhance stats or grant special abilities.
     A player can only wear one equipment.
     """
