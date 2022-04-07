@@ -40,6 +40,10 @@
             "roll": "precision",
             "requires": "melee weapon, piercing weapon or shield",
             "effect": "redirect the attack, nullifying the damage"
+        },
+        "notice": {
+            "roll": "mental",
+            "effect": "identify a threat"
         }
     },
     "efforts": {
