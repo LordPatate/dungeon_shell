@@ -17,6 +17,9 @@ class Stat:
     def __str__(self) -> str:
         return f'{self.cur}/{self.max}'
 
+    def __bool__(self) -> bool:
+        return self.cur > 0
+
     @property
     def cur(self) -> int:
         return self._cur

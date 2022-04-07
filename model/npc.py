@@ -14,35 +14,27 @@ class NPC(Creature):
 
     RESOURCE_FILE = "./resources/bestiary.json"
 
-    def __init__(self,
-                 name: str,
-                 level: int,
-                 damage: int = -1,
-                 health: Union[Stat, int] = None,
-                 armor: int = 0,
-                 abilities: str = None
-                 ) -> None:
+    def __init__(self, name: str, details: dict):
+        level = details["level"]
         super().__init__(name, level)
-        self.damage: int = level if damage == -1 else damage
-        if isinstance(health, int):
-            health = Stat(health)
-        self.health: Stat = Stat(level * 3) if health is None else health
-        self.armor: int = armor
-        self.abilities: Optional[str] = abilities
+        self.damage = details.get("damage", level)
+        self.health = Stat(details.get("health", level * 3))
+        self.armor = details.get("armor", 0)
+        self.abilities = details.get("abilities")
 
     def __str__(self) -> str:
-        if self.health.cur == 0:
-            return f'[{self.level}] {self.name}: DEAD'
-        summary = f'[{self.level}] {self.name}: {self.health}'
-        details = []
-        if self.damage != self.level:
-            details.append(f'{self.damage} damage')
-        if self.armor > 0:
-            details.append(f'{self.armor} armor')
+        health = self.health or "DEAD"
+        description = [
+            f"[{self.level}] {self.name}: {health}",
+        ]
+        for stat in ("damage", "armor",):
+            value = getattr(self, stat)
+            if value:
+                description.append(f"{stat}: {value}")
         if self.abilities is not None:
-            details.append(f'abilities: {self.abilities}')
+            description.append(self.abilities)
 
-        return f'{summary} ({", ".join(details)})' if details else summary
+        return ", ".join(description)
 
     def get_health(self) -> Stat:
         return self.health
