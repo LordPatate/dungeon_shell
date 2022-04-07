@@ -1,6 +1,5 @@
 import json
 import random
-from typing import Tuple
 
 
 class GenericFactory:
