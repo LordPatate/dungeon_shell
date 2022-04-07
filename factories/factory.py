@@ -16,11 +16,7 @@ class GenericFactory:
 
     def random(self, category: str = None):
         if category is None:
-            candidates: dict = random.choice(list(self._root.values()))
-        else:
-            candidates = self._root[category]
+            category = random.choice(list(self._root))
+        name = random.choice(list(self._root[category]))
 
-        _tuple: Tuple[str, dict] = random.choice(list(candidates.items()))
-        name, details = _tuple
-
-        return self.target_class(name, details)
+        return self.target_class(name, self._root[name])
