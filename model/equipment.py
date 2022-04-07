@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import List
 
 
 class Equipment:
@@ -10,23 +10,24 @@ class Equipment:
     """
     RESOURCE_FILE = './resources/equipment.json'
 
-    def __init__(self,
-                 name: str,
-                 armor: int = 0,
-                 abilities: str = None
-                 ) -> None:
+    def __init__(self, name: str, details: dict):
         self.name: str = name
-        self.armor: int = armor
-        self.abilities: Optional[str] = abilities
+        self.abilities = details.get("abilities")
+        self.armor = details.get("armor", 0)
+        self.stealth = details.get("stealth", 0)
+        self.dodge = details.get("dodge", 0)
 
     def __str__(self) -> str:
         description: List[str] = [
             self.name
         ]
         if self.armor > 0:
-            description.append(
-                f'+{self.armor} armor'
-            )
+            description.append(f'armor: {self.armor}')
+        stats = ("stealth", "dodge",)
+        for stat in stats:
+            value = getattr(self, stat)
+            if value:
+                description.append(f"+{value} to {stat} rolls")
         if self.abilities is not None:
             description.append(self.abilities)
 
