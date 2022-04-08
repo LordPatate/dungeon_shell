@@ -9,10 +9,10 @@ from model import Player, Qualifier
 @pytest.mark.parametrize(
     "name, left_weapon_name, right_weapon_name, equipment_name, stats",
     [
-        ("Joe", "dagger", "dagger", "backpack", (3, 7, 11, 15)),
-        ("Jack", "sword", "shield", "leather jerkin", (7, 3, 15, 11)),
-        ("William", "bow", "light crossbow", "cape", (11, 15, 3, 7)),
-        ("Averell", "grimoire", "wand", "backpack", (15, 11, 7, 3)),
+        ("Joe", "dagger", "dagger", "traveller cloak", (3, 7, 11, 15)),
+        ("Jack", "bow", "wooden shield", "leather jerkin", (7, 3, 15, 11)),
+        ("William", "sword", "wooden shield", "leather jerkin", (11, 15, 3, 7)),
+        ("Averell", "wooden shield", "wand", "light clothes", (15, 11, 7, 3)),
     ]
 )
 def test_player_creation_scenario(
