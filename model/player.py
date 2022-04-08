@@ -3,7 +3,8 @@ from typing import Dict, Optional, Union
 
 from model.consumables import Consumable
 from model.creature import Creature, Stat
-from model.equipment import Equipment, Weapon
+from model.equipment import Equipment
+from model.weapons import Weapon
 from utils import Container
 
 

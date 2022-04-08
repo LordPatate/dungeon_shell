@@ -3,8 +3,9 @@ from factories.consumables_factories import (
 )
 from factories.factory import GenericFactory
 from model.consumables import Consumable
-from model.equipment import Equipment, Weapon
+from model.equipment import Equipment
 from model.npc import NPC
+from model.weapons import Weapon
 
 npc_factory = GenericFactory(NPC.RESOURCE_FILE, NPC)
 weapon_factory = GenericFactory(Weapon.RESOURCE_FILE, Weapon)
