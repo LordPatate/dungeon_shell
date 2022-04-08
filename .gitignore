@@ -1,4 +1,7 @@
+**/__pycache__/
+.coverage
+
 Pipfile
+
 .vscode/
 .idea
-**/__pycache__/
