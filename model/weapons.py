@@ -1,13 +1,13 @@
-from enum import Enum, auto
+from enum import Enum
 from typing import List
 
 
 class WeaponType(str, Enum):
-    SHIELD = auto()
-    MELEE = auto()
-    PIERCING = auto()
-    RANGED = auto()
-    MAGIC = auto()
+    SHIELD = "shield"
+    MELEE = "melee"
+    PIERCING = "piercing"
+    RANGED = "ranged"
+    MAGIC = "magic"
 
 
 class Weapon:
