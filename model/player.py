@@ -63,7 +63,7 @@ class Player(Creature):
 
         self.stats: Dict[PlayerStat, Stat] = dict()
         stat_order = map(PlayerStat, stat_order)
-        for stat, value in zip(stat_order, (15, 13, 9, 6)):
+        for stat, value in zip(stat_order, (15, 12, 9, 6)):
             self.stats[stat] = Stat(value)
 
         self._qualifier: Optional[Qualifier] = None
