@@ -7,12 +7,12 @@ from model import Player, Qualifier
 
 
 @pytest.mark.parametrize(
-    "name, left_weapon_name, right_weapon_name, equipment_name, stats",
+    "name, left_weapon_name, right_weapon_name, equipment_name, stats_order",
     [
-        ("Joe", "dagger", "dagger", "traveller cloak", (3, 7, 11, 15)),
-        ("Jack", "bow", "wooden shield", "leather jerkin", (7, 3, 15, 11)),
-        ("William", "sword", "wooden shield", "leather jerkin", (11, 15, 3, 7)),
-        ("Averell", "wooden shield", "wand", "light clothes", (15, 11, 7, 3)),
+        ("Joe", "dagger", "dagger", "traveller cloak", ("mental", "precision", "speed", "strength")),
+        ("Jack", "bow", "wooden shield", "leather jerkin", ("precision", "mental", "strength", "speed")),
+        ("William", "sword", "wooden shield", "leather jerkin", ("speed", "strength", "mental", "precision")),
+        ("Averell", "wooden shield", "wand", "light clothes", ("strength", "speed", "precision", "mental")),
     ]
 )
 def test_player_creation_scenario(
@@ -20,7 +20,7 @@ def test_player_creation_scenario(
         left_weapon_name: str,
         right_weapon_name: str,
         equipment_name: str,
-        stats: Tuple[int, int, int, int],
+        stats_order: Tuple[str, str, str, str],
 ):
     weapon_category_name = "starting weapons"
     equipment_category_name = "basic equipment"
@@ -28,7 +28,7 @@ def test_player_creation_scenario(
         name, left_weapon_name, right_weapon_name, equipment_name, Qualifier.STRONG, "Healing potion"
     }
 
-    player = Player(name, stats[0], stats[1], stats[2], stats[3])
+    player = Player(name, *stats_order)
     player.qualifier = Qualifier.STRONG
     left_weapon = weapon_factory.from_name(left_weapon_name, weapon_category_name)
     right_weapon = weapon_factory.from_name(right_weapon_name, weapon_category_name)

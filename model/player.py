@@ -1,5 +1,5 @@
 from enum import Enum, auto
-from typing import Dict, Optional, Union
+from typing import Dict, Optional, Tuple, Union
 
 from model.consumables import Consumable
 from model.creature import Creature, Stat
@@ -8,11 +8,11 @@ from model.weapons import Weapon
 from utils import Container
 
 
-class PlayerStat(Enum):
-    STRENGTH = auto()
-    SPEED = auto()
-    PRECISION = auto()
-    MENTAL = auto()
+class PlayerStat(str, Enum):
+    STRENGTH = "strength"
+    SPEED = "speed"
+    PRECISION = "precision"
+    MENTAL = "mental"
 
 
 class Qualifier:
@@ -57,21 +57,14 @@ class Player(Creature):
     They can wield weapons, wear equipment and carry consumables.
     They can get an expertise and a signature.
     """
-    def __init__(self,
-                 name:      str,
-                 strength:  int,
-                 speed:     int,
-                 precision: int,
-                 mental:    int
-                 ):
+    def __init__(self, name: str, *stat_order: Tuple[str, str, str, str]):
         super().__init__(name, level=4)
         self.heath = Stat(10)
 
         self.stats: Dict[PlayerStat, Stat] = dict()
-        self.stats[PlayerStat.STRENGTH] = Stat(strength)
-        self.stats[PlayerStat.SPEED] = Stat(speed)
-        self.stats[PlayerStat.PRECISION] = Stat(precision)
-        self.stats[PlayerStat.MENTAL] = Stat(mental)
+        stat_order = map(PlayerStat, stat_order)
+        for stat, value in zip(stat_order, (15, 13, 9, 6)):
+            self.stats[stat] = Stat(value)
 
         self._qualifier: Optional[Qualifier] = None
         self.expertise: Optional[str] = None
