@@ -4,7 +4,6 @@ import pytest
 
 from factories import equipment_factory, potion_factory, weapon_factory
 from model import Player, Qualifier
-from model.player import PlayerStat
 
 
 @pytest.mark.parametrize(
