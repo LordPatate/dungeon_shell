@@ -8,8 +8,8 @@ from factories import (
 )
 
 resource_files = {
-    npc_factory: 'bestiary.json',
-    weapon_factory: 'armory.json',
+    npc_factory: 'npcs.json',
+    weapon_factory: 'weapons.json',
     equipment_factory: 'equipment.json',
     consumable_factory: 'consumables.json',
     potion_factory: 'consumables.json',

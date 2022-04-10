@@ -19,7 +19,7 @@ class Weapon:
     don't, and critical hits deal twice more damage.
     """
 
-    RESOURCE_FILE = './resources/armory.json'
+    RESOURCE_FILE = './resources/weapons.json'
 
     def __init__(self, name: str, details: dict):
         self.name = name
