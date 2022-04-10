@@ -55,3 +55,11 @@ def test_stat_iadd_uses_cur():
     some_stat += 1
     assert some_stat.cur == starting_value - 1
     assert some_stat.max == starting_value
+
+
+def test_stat_compare():
+    some_stat = Stat(10)
+    some_stat -= 5
+    assert some_stat < 7
+    assert some_stat > 4
+    assert some_stat == 5

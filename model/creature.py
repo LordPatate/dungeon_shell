@@ -1,6 +1,8 @@
+import functools
 from typing import Callable, List
 
 
+@functools.total_ordering
 class Stat:
     """A stat pool, with a maximum amount and a current value.
 
@@ -19,6 +21,9 @@ class Stat:
 
     def __bool__(self) -> bool:
         return self.cur > 0
+
+    def __int__(self) -> int:
+        return self.cur
 
     @property
     def cur(self) -> int:
@@ -47,6 +52,12 @@ class Stat:
 
     def __isub__(self, value: int) -> "Stat":
         return self.__iadd__(-value)
+
+    def __eq__(self, other: int or "Stat") -> bool:
+        return int(self) == other
+
+    def __lt__(self, other: int or "Stat") -> bool:
+        return int(self) < other
 
 
 class Creature:
