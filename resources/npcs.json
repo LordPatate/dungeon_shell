@@ -1,6 +1,7 @@
 {
     "beasts": {
         "wolf": {"level":1},
+        "alpha wolf": {"level": 2, "damage": 3, "health": 5},
         "bear": {"level":4, "damage":3, "armor":1},
         "griffin": {"level": 5, "abilities": "flight"}
     },

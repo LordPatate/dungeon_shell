@@ -1,0 +1,61 @@
+{
+  "lonely bear": {
+    "ennemies": [
+      "bear"
+    ],
+    "loot": [
+      "healing potion"
+    ]
+  },
+  "wolf pack": {
+    "ennemies": [
+      "wolf",
+      "wolf",
+      "wolf",
+      "alpha wolf"
+    ]
+  },
+  "goblin scouts": {
+    "ennemies": [
+      "goblin",
+      "goblin"
+    ],
+    "loot": [
+      "random bomb"
+    ]
+  },
+  "dungeon gate": {
+    "neutral": [
+      "dungeon keeper",
+      "hound",
+      "hound"
+    ],
+    "loot": [
+      "crossbow",
+      "healing potion"
+    ]
+  },
+  "goblin outpost": {
+    "ennemies": [
+      "goblin",
+      "goblin",
+      "goblin warleader"
+    ],
+    "loot": [
+      "common weapons",
+      "random bomb",
+      "random bomb"
+    ]
+  },
+  "werewolf lair": {
+    "ennemies": [
+      "werewolf"
+    ],
+    "loot": [
+      "healing potion",
+      "healing potion",
+      "common weapons",
+      "wind scroll"
+    ]
+  }
+}
