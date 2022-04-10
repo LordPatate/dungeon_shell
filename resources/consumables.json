@@ -1,9 +1,9 @@
 {
     "special potions": {
-        "power": {"effect":"inflict 3 more melee damage for a few minutes"},
-        "swiftness": {"effect":"one more action per turn for a few minutes"},
-        "focus": {"effect":"+3 critical chance for a few minutes"},
-        "serenity": {"effect":"spells cost 3 less for a few minutes"},
+        "power": {"effect":"inflict 2 more melee damage for a few minutes"},
+        "swiftness": {"effect":"extra action per turn for a few minutes"},
+        "focus": {"effect":"always perform critical hits for a few minutes"},
+        "serenity": {"effect":"+2 spell level for a few minutes"},
         "invisibility": {"effect":"become invisible for a very short time"},
         "transformation": {"effect":"transform into a desired up-to-level-3 creature for several minutes"},
         "night vision": {"effect":"see in the dark for several minutes"},
