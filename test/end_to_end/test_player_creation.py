@@ -46,5 +46,5 @@ def test_player_creation_scenario(
     output = player.details()
     for expected_element in expected_elements:
         assert expected_element in output
-    assert player.stats[stats_order[0]].max == 17 if stats_order[0] == "strength" else 15
-    assert player.stats[stats_order[3]].max == 8 if stats_order[3] == "strength" else 6
+    assert player.get_stat(stats_order[0]).max == 17 if stats_order[0] == "strength" else 15
+    assert player.get_stat(stats_order[3]).max == 8 if stats_order[3] == "strength" else 6

@@ -61,10 +61,14 @@ class Player(Creature):
         super().__init__(name, level=4)
         self.heath = Stat(10)
 
-        self.stats: Dict[PlayerStat, Stat] = dict()
+        stats: Dict[PlayerStat, Stat] = dict()
         stat_order = map(PlayerStat, stat_order)
         for stat, value in zip(stat_order, (15, 12, 9, 6)):
-            self.stats[stat] = Stat(value)
+            stats[stat] = Stat(value)
+        self.strength = stats[PlayerStat.STRENGTH]
+        self.speed = stats[PlayerStat.SPEED]
+        self.precision = stats[PlayerStat.PRECISION]
+        self.mental = stats[PlayerStat.MENTAL]
 
         self._qualifier: Optional[Qualifier] = None
         self.expertise: Optional[str] = None
@@ -78,8 +82,7 @@ class Player(Creature):
         self.inventory = Container[Union[Weapon, Equipment, Consumable]]()
 
     def __str__(self) -> str:
-        return '{name} ({STRENGTH} • {SPEED} • {PRECISION} • {MENTAL})'\
-            .format(name=self.name, **{item.name: value for item, value in self.stats.items()})
+        return f"{self.name} ({self.strength} • {self.speed} • {self.precision} • {self.mental})"
 
     def details(self) -> str:
         return f'''
@@ -88,10 +91,10 @@ class Player(Creature):
         {f"Expertise: {self.expertise}" if self.expertise else ''}
         {f"""Signature move: {self.signature}
         ------------""" if self.signature else ''}
-        Strength:  {self.stats[PlayerStat.STRENGTH]}
-        Speed:     {self.stats[PlayerStat.SPEED]}
-        Precision: {self.stats[PlayerStat.PRECISION]}
-        Mental:    {self.stats[PlayerStat.MENTAL]}
+        Strength:  {self.strength}
+        Speed:     {self.speed}
+        Precision: {self.precision}
+        Mental:    {self.mental}
         ------------
         Wields: {"""
           • """ + """
@@ -163,8 +166,8 @@ class Player(Creature):
 
         return total
 
-    def get_stat(self, which: PlayerStat) -> Stat:
-        return self.stats[which]
+    def get_stat(self, which: PlayerStat or str) -> Stat:
+        return getattr(self, which)
 
     @property
     def qualifier(self) -> Optional[Qualifier]:
@@ -177,8 +180,8 @@ class Player(Creature):
         if self._qualifier is not None and \
                 self._qualifier.name in Qualifier.corresponding_stat:
             corresponding = Qualifier.corresponding_stat[self._qualifier.name]
-            self.stats[corresponding].max -= 2
+            self.get_stat(corresponding).max -= 2
         if value.name in Qualifier.corresponding_stat:
             corresponding = Qualifier.corresponding_stat[value.name]
-            self.stats[corresponding].max += 2
+            self.get_stat(corresponding).max += 2
         self._qualifier = value
