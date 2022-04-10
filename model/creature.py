@@ -41,6 +41,13 @@ class Stat:
 
         self._max = max(0, value)
 
+    def __iadd__(self, value: int) -> "Stat":
+        self.cur += value
+        return self
+
+    def __isub__(self, value: int) -> "Stat":
+        return self.__iadd__(-value)
+
 
 class Creature:
     """A creature that can be hurt, healed and killed."""

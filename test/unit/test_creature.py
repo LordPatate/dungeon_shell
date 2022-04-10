@@ -9,7 +9,7 @@ def test_stat_init():
     assert some_stat.cur == some_stat.max == max_value
 
 
-def test_stat_cur_setter():
+def test_stat_cur_setter_bounds():
     max_value = 10
     some_stat = Stat(max_value)
 
@@ -42,3 +42,16 @@ def test_stat_max_lower(delta):
     some_stat.max -= 1
     assert some_stat.max == max_starting_value - 1
     assert some_stat.cur == min(cur_starting_value, some_stat.max)
+
+
+def test_stat_iadd_uses_cur():
+    starting_value = 10
+    some_stat = Stat(starting_value)
+
+    some_stat -= 2
+    assert some_stat.cur == starting_value - 2
+    assert some_stat.max == starting_value
+
+    some_stat += 1
+    assert some_stat.cur == starting_value - 1
+    assert some_stat.max == starting_value
