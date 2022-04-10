@@ -102,6 +102,12 @@ class Creature:
         """
         self._on_death_listeners.append(listener)
 
+    def is_alive(self) -> bool:
+        return self.get_health().cur > 0
+
+    def is_hurt(self) -> bool:
+        return self.is_alive() and self.get_health().cur < self.get_health().max
+
     def get_health(self) -> Stat:
         raise NotImplementedError()
 
