@@ -16,11 +16,11 @@ def test_bear_encounter():
     knight.hurt(winnie.damage)
     assert knight.is_hurt()
 
-    # Lancelot attacks
-    winnie.hurt(sword.damage)
+    # Lancelot attacks with extra effort
+    knight.strength -= 2
+    winnie.hurt(sword.damage + 2)
     assert winnie.is_hurt()
 
     # Lancelot heals winnie
-    winnie.heal(3)
-    knight.mental -= 1
+    winnie.heal(6)
     assert winnie.is_hurt() is False
