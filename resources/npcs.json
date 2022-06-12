@@ -29,5 +29,13 @@
         "elemental": {"level":4, "abilities":"fire, ice, wind or lightning magic (depending on elemental type)"},
         "golem": {"level":5, "health":12, "armor":3},
         "battle angel": {"level": 6, "damage": 5, "abilities": "flight, heal (7)"}
+    },
+    "dragons": {
+        "whelp": {"level": 3, "abilities": "fire breath, magic immunity"},
+        "drake": {"level": 10, "damage": 8, "armor": 2, "abilities": "flight, fire breath, fire immunity"},
+        "dragon": {"level": 20, "damage": 10, "health": 66, "armor": 4, "abilities": "flight, fire breath, fire immunity, wing beat"}
+    },
+    "demons": {
+        "inferno": {"level": 16, "abilities": "magic immunity"}
     }
 }
