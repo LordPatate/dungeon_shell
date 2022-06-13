@@ -2,28 +2,29 @@
     "starting weapons": {
         "wooden shield": {"type": "shield", "block": 4},
         "sword": {"type": "melee", "damage": 4},
-        "dagger": {"type": "piercing", "damage": 3},
+        "dagger": {"type": "piercing", "damage": 3, "critical bonus chance": 1},
         "bow": {"type": "ranged", "two_handed": true, "damage": 4},
         "wand": {"type": "magic", "spell level": 1}
     },
     "common weapons": {
         "mace": {"type": "melee", "two_handed": true, "damage": 5, "abilities": "stun"},
-        "spear": {"type": "piercing", "damage": 3, "abilities": "throwable at short range"},
+        "spear": {"type": "piercing", "damage": 4, "abilities": "if used with both hands, +1 to attack rolls"},
         "light crossbow": {"type": "ranged", "damage": 4, "reload": 1},
-        "wizard staff": {"type": "magic", "two_handed": true, "spell level": 2}
+        "wizard staff": {"type": "magic", "two_handed": true, "spell level": 3},
+        "grimoire": {"type": "magic", "abilities": "spells success is determined by your maximum of Mental"}
     },
     "military weapons": {
-        "steel shield": {"type": "shield", "block": 6},
+        "steel shield": {"type": "shield", "block": 5},
         "war axe": {"type": "melee", "two_handed": true, "damage": 6, "abilities": "critical hits can chop limbs"},
-        "rapier": {"type": "piercing", "damage": 3, "critical": 9},
-        "crossbow": {"type": "ranged", "two_handed": true, "damage": 6, "reload": 1},
-        "grimoire": {"type": "magic", "abilities": "spells success is determined by your maximum of Mental"}
+        "greatsword": {"type": "melee", "two_handed": true, "damage": 6, "abilities": "+1 to attack rolls"},
+        "rapier": {"type": "piercing", "damage": 4, "abilities": "ignores armor"},
+        "crossbow": {"type": "ranged", "two_handed": true, "damage": 7, "reload": 1}
     },
     "rare weapons": {
         "reflecting shield": {"type": "shield", "block": 5, "abilities": "attacks completely blocked are reflected back to the attacker"},
         "lightning spear": {"type": "piercing", "damage": 5, "abilities": "throwable at medium range; teleports the thrower to the point of impact"},
         "energy sword": {"type": "melee", "two_handed": true, "damage": 6, "critical": 0, "abilities": "no rolls required"},
-        "pistol": {"type": "ranged", "damage": 9, "abilities": "ignores armor", "reload": 3},
+        "pistol": {"type": "ranged", "damage": 10, "abilities": "ignores armor", "reload": 3},
         "orb": {"type": "magic", "two_handed": true, "abilities": "spells can be charged up over multiple turns, doubling the level every turn"}
     }
 }
