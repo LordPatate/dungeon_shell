@@ -20,8 +20,9 @@
         "bandit": {"level":3},
         "adventurer": {"level":4},
         "knight": {"level":5},
-        "master": {"level": 6},
-        "warlock": {"level": 7}
+        "royal instructor": {"level": 6},
+        "warlock": {"level": 7},
+        "legendary hero": {"level": 10}
     },
     "summonnables": {
         "fairy": {"level":0, "health":1, "abilities":"heal (2)"},      
