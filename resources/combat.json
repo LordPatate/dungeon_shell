@@ -13,7 +13,7 @@
         "stab": {
             "roll": "precision",
             "requires": "piercing weapon",
-            "effect": "ignores a target's armor to inflict a precise wound at melee range"
+            "effect": "inflict a precise wound at melee range"
         },
         "shoot": {
             "roll": "precision",
