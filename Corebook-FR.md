@@ -6,7 +6,8 @@ Par Tom Bricaud
 ## Scénario
 
 Les joueurs incarneront un groupe partant à l'aventure en quête de gloire, de pouvoir, de richesses ou de défi.
-Ils ont entendu parler d'un réseau de cavernes infesté de monstres, abritant un repaire de gobelin et servant de refuge à certains brigands, dont personne n'ose s'approcher.
+Ils ont entendu parler d'un réseau de cavernes infesté de monstres, abritant un repaire de gobelin et servant de refuge à certains brigands.
+C'est un lieu très populaire pour les aventuriers. Il en vient de tous les pays.
 
 ## Démarrage
 
