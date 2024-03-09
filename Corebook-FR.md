@@ -17,8 +17,9 @@ Pour des parties plus rapides à démarrer ou pour les joueurs débutants, comme
 
 Les règles avancées donneront accès à plus d'options de personnalisation et de progression.
 Elles peuvent aussi rendre l'expérience plus réaliste.
+Cette icône indique que la règle est considérée comme "avancée" : 🤓
 
-Il est également parfaitement envisageable de commencer une partie avec les règles simples puis d'ajouter les règles avancées au fur et à mesure.
+Il est également parfaitement envisageable de commencer une partie avec les règles simples puis d'ajouter des règles au fur et à mesure.
 
 ## Règles simplissimes
 
@@ -46,9 +47,9 @@ Les règles suivantes peuvent être ajustées selon le nombre de joueurs :
 
 Pour créer un nouveau personnage, le joueur doit choisir :
 - la répartition de ses caractéristiques
-- un qualificatif
-- s'il le souhaite, un sac à dos, une cape ou une armure
 - jusqu'à 2 armes (3 avec un sac à dos)
+- 🤓 un qualificatif
+- 🤓 son équipement : aucun, un sac à dos, une cape ou une armure
 
 ## Caractéristiques
 
@@ -94,7 +95,7 @@ Les joueurs peuvent passer leur tour pour récupérer 3 points de Mental.
 Avoir plus de 15 points de Mental permet de ne pas dépenser de points pour des sorts coûtant 4 ou moins.
 
 
-## Qualificatifs
+## 🤓 Qualificatifs
 
 Chaque qualificatif apporte une modification unique.
 Par défaut, il apporte un bonus de 3 quand un jet est demandé pour une action où le qualificatif peut s'appliquer.
@@ -119,7 +120,7 @@ Les joueurs expérimentés sont libres d'en suggérer d'autres : charismatique, 
 De l'équipement peut-être trouvé lors de l'exploration et sur les cadavres des ennemis.
 L'équipement de départ n'a rien de particulier, sauf raison valable proposée par le joueur.
 
-### Sac, Capes et Armures
+### 🤓 Sac, Capes et Armures
 Un personnage peut porter soit un sac à dos, soit une cape, soit une armure.
 - Le sac à dos permet de transporter une arme supplémentaire et autant de consommables que l'on veut.
 - Une cape banale apporte un bonus de 3 aux jets de furtivité.
@@ -172,7 +173,7 @@ Ces "chances de critiques" peuvent être augmentées de plusieurs façons, notam
 Une attaque prenant un adversaire par surprise est forcément critique.
 Un ennemi réalise une attaque critique si le jet défensif de sa cible obtient un score de 20.
 
-## Consommables
+## 🤓 Consommables
 
 Les consommables regroupent tous les objets à usage unique comme les potions, les bombes et les parchemins.
 Chaque personnage ne peut en principe transporter qu'un consommable, mais on en trouve pratiquement partout.
@@ -193,7 +194,8 @@ La créature peut être congédiée puis ré-invoquée à volonté tant qu'elle 
 ## Butin
 
 Chaque combat rapporte 10 or +5 par niveau de profondeur.
-De plus, un joueur doit lancer deux d4. Le résultat du premier indique le type d'objet trouvé et le deuxième indique sa qualité.
+
+🤓 De plus, un joueur doit lancer deux d4. Le résultat du premier indique le type d'objet trouvé et le deuxième indique sa qualité.
 1 : Potion de soin
 2 : Potion de mana
 3 : Bombe ordinaire
@@ -205,13 +207,13 @@ Exception après avoir vaincu un boss :
 - du repos (caractéristiques régénérés)
 
 
-## Progression
+## 🤓 Progression
 
 Les PJ gagnent en puissance au cours de l'aventure.
 En plus de l'équipement qu'ils peuvent trouver ou acheter, le MJ doit marquer leur progression par le gain de niveaux.
 Le premier niveau gagné accorde une **expertise**, le deuxième une **signature**.
 
-## Expertise
+### Expertise
 
 L'expertise facilite les actions d'un certain type.
 Elle peut s'appliquer de deux manières :
@@ -234,7 +236,7 @@ Suggestions d'expertises :
 - ingénierie/science
 ...
 
-## Signature
+### Signature
 
 Une signature est une capacité de PJ dont nul autre n'est capable.
 La spécialité est inventée par le joueur et validée par le MJ.
@@ -249,7 +251,7 @@ Suggestions de signature :
 - nécromancie
 ...
 
-## Jeton de chance et de malchance
+## 🤓 Jeton de chance et de malchance
 
 Chaque joueur dispose d'un jeton de chance au démarrage.
 Utiliser un jeton permet soit d'échapper miraculeusement à une situation désespérée, soit de forcer une réussite critique.
