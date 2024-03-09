@@ -30,6 +30,8 @@ Pour la difficulté des jets, utilisez ces valeurs comme valeur cible (le jet es
 - si c'est une tâche difficile : 7
 - s'il a un handicap sérieux : 3
 
+Appliquez des malus ou des bonus selon la situation.
+
 Avec ces règles, le maître de jeu est encouragé à faire plus d'efforts de créativité et d'improvisation pour décrire les conséquences des choix des joueurs.
 
 ## Difficulté et nombre de joueurs
@@ -253,11 +255,3 @@ Chaque joueur dispose d'un jeton de chance au démarrage.
 Utiliser un jeton permet soit d'échapper miraculeusement à une situation désespérée, soit de forcer une réussite critique.
 Cependant, cela octroie un jeton de malchance au MJ, qui peut l'utiliser pour sauver un PNJ ou forcer un échec.
 Pour forcer une réussite ou un échec, le jeton doit être utilisé avant le lancer de dé.
-
-## Difficulté et nombre de joueurs
-
-Les règles suivantes peuvent être ajustées selon le nombre de joueurs :
-- la récupérations des caractéristiques après chaque combat
-- le niveau ou le nombre des ennemis
-- la quantité de consommables trouvés
-- le support d'un familier, mercenaire ou acolyte non joueur
