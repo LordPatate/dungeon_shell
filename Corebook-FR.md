@@ -196,10 +196,10 @@ La créature peut être congédiée puis ré-invoquée à volonté tant qu'elle 
 Chaque combat rapporte 10 or +5 par niveau de profondeur.
 
 🤓 De plus, un joueur doit lancer deux d4. Le résultat du premier indique le type d'objet trouvé et le deuxième indique sa qualité.
-1 : Potion de soin
-2 : Potion de mana
-3 : Bombe ordinaire
-4 : Parchemin (feu / glace / vent / foudre)
+1. Potion de soin
+2. Potion de mana
+3. Bombe ordinaire
+4. Parchemin (feu / glace / vent / foudre)
 
 Exception après avoir vaincu un boss :
 - 100 or
