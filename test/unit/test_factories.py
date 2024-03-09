@@ -1,6 +1,5 @@
-import json
-
 import pytest
+import yaml
 
 from factories import (
     npc_factory, weapon_factory, equipment_factory, consumable_factory,
@@ -8,14 +7,14 @@ from factories import (
 )
 
 resource_files = {
-    npc_factory: 'npcs.json',
-    weapon_factory: 'weapons.json',
-    equipment_factory: 'equipment.json',
-    consumable_factory: 'consumables.json',
-    potion_factory: 'consumables.json',
-    bomb_factory: 'consumables.json',
-    scroll_factory: 'consumables.json',
-    summoning_stone_factory: 'consumables.json',
+    npc_factory: 'npcs.yaml',
+    weapon_factory: 'weapons.yaml',
+    equipment_factory: 'equipment.yaml',
+    consumable_factory: 'consumables.yaml',
+    potion_factory: 'consumables.yaml',
+    bomb_factory: 'consumables.yaml',
+    scroll_factory: 'consumables.yaml',
+    summoning_stone_factory: 'consumables.yaml',
 }
 factories = list(resource_files.keys())
 
@@ -23,8 +22,8 @@ factories = list(resource_files.keys())
 @pytest.mark.parametrize('factory', factories[:4])
 def test_from_name(factory):
     file = f'./resources/{resource_files[factory]}'
-    with open(file) as f:
-        root = json.load(f)
+    with open(file, encoding="utf-8") as f:
+        root = yaml.safe_load(f)
     for category in root:
         for name in root[category]:
             assert factory.from_name(name, category)

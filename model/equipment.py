@@ -8,7 +8,7 @@ class Equipment:
     It can provide armor, enhance stats or grant special abilities.
     A player can only wear one equipment.
     """
-    RESOURCE_FILE = './resources/equipment.json'
+    RESOURCE_FILE = './resources/equipment.yaml'
 
     def __init__(self, name: str, details: dict):
         self.name: str = name

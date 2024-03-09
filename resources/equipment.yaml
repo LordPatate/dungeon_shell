@@ -1,0 +1,28 @@
+basic equipment:
+  leather jerkin:
+    armor: 1
+  light clothes:
+    dodge: 1
+  traveller cloak:
+    stealth: 1
+military equipment:
+  assassin outfit:
+    dodge: 1
+    stealth: 2
+  chainmail:
+    armor: 2
+    dodge: -1
+    stealth: -1
+  plate armor:
+    armor: 3
+    dodge: -3
+    stealth: -3
+rare equipment:
+  dragon skin:
+    abilities: fire immunity
+    armor: 2
+  invisibility cloak:
+    stealth: 5
+  vampire cloak:
+    abilities: transform into a bat at will
+    stealth: 2

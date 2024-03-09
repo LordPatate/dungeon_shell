@@ -1,0 +1,15 @@
+basic:
+  heal: restores X+2 health to a target
+  raw: deals X damages to a target
+elemental:
+  fire: burns a target dealing X-2 damage for 3 turns
+  frost: freezes a level X or lower creature
+  lightning: deals 2*X damage to the nearest target
+  wind: knocks back all level X or lower creatures
+manipulation:
+  force field: barrier that absorbs up to 2*X damage
+  telekinesis: move around freely an object the size of a level X-3 or less creature
+mind:
+  hypnosis: take control of a level X-1 or lower creature for 1 turn
+  illusion: create a holographic image the size of a level X creature
+  thoughts reading: know the intentions of level X or lower

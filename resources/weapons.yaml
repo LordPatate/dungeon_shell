@@ -1,0 +1,87 @@
+common weapons:
+  grimoire:
+    abilities: spells success is determined by your maximum of Mental
+    type: magic
+  light crossbow:
+    damage: 4
+    reload: 1
+    type: ranged
+  mace:
+    abilities: stun
+    damage: 5
+    two_handed: true
+    type: melee
+  spear:
+    abilities: if used with both hands, +1 to attack rolls
+    damage: 4
+    type: piercing
+  wizard staff:
+    spell level: 3
+    two_handed: true
+    type: magic
+military weapons:
+  crossbow:
+    damage: 7
+    reload: 1
+    two_handed: true
+    type: ranged
+  greatsword:
+    abilities: +1 to attack rolls
+    damage: 6
+    two_handed: true
+    type: melee
+  rapier:
+    abilities: ignores armor
+    damage: 4
+    type: piercing
+  steel shield:
+    block: 5
+    type: shield
+  war axe:
+    abilities: critical hits can chop limbs
+    damage: 6
+    two_handed: true
+    type: melee
+rare weapons:
+  energy sword:
+    abilities: no rolls required
+    critical: 0
+    damage: 6
+    two_handed: true
+    type: melee
+  lightning spear:
+    abilities: throwable at medium range; teleports the thrower to the point of impact
+    damage: 5
+    type: piercing
+  orb:
+    abilities: spells can be charged up over multiple turns, doubling the level every
+      turn
+    two_handed: true
+    type: magic
+  pistol:
+    abilities: ignores armor
+    damage: 10
+    reload: 3
+    type: ranged
+  reflecting shield:
+    abilities: attacks completely blocked are reflected back to the attacker
+    block: 5
+    type: shield
+starting weapons:
+  bow:
+    damage: 4
+    two_handed: true
+    type: ranged
+  dagger:
+    critical bonus chance: 1
+    damage: 3
+    type: piercing
+  sword:
+    damage: 4
+    type: melee
+  wand:
+    spell level: 1
+    type: magic
+  wooden shield:
+    block: 4
+    type: shield

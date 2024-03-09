@@ -3,7 +3,7 @@ from model.npc import NPC
 
 
 class Consumable:
-    RESOURCE_FILE = './resources/consumables.json'
+    RESOURCE_FILE = './resources/consumables.yaml'
 
     def __init__(self, name: str, effect: str):
         self.depleted = False

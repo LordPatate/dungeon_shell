@@ -1,0 +1,38 @@
+bombs:
+  classic:
+    effect: explodes dealing 8 damage at point of impact and 4 in a small area; causes
+      minor destruction
+  flame:
+    effect: spill ignited oil all targets within a small radius, dealing them 4 damage
+      each turn
+  flash:
+    effect: emits a flash of brilliant light, blinding for several seconds anyone
+      looking at it
+  poison:
+    effect: liberates a toxic cloud gas that dissipates quickly, poisoning all creatures
+      in a large radius
+  shrapnel:
+    effect: shatter into plenty of small sharp pieces of glass and metal, dealing
+      6 damage to all creatures in a large radius
+  smoke:
+    effect: produce a thick smoke screen big enough to fill a small room
+  sonic:
+    effect: detonates with a high-pitch loud noise, stunning all creatures in a large
+      radius; those at the center might pass out
+special potions:
+  focus:
+    effect: always perform critical hits for a few minutes
+  invisibility:
+    effect: become invisible for a very short time
+  night vision:
+    effect: see in the dark for several minutes
+  power:
+    effect: inflict 2 more melee damage for a few minutes
+  resurrection:
+    effect: resurrect a recently dead creature
+  serenity:
+    effect: +2 spell level for a few minutes
+  swiftness:
+    effect: extra action per turn for a few minutes
+  transformation:
+    effect: transform into a desired up-to-level-3 creature for several minutes

@@ -1,0 +1,42 @@
+dungeon gate:
+  loot:
+  - crossbow
+  - healing potion
+  neutral:
+  - dungeon keeper
+  - hound
+  - hound
+goblin outpost:
+  ennemies:
+  - goblin
+  - goblin
+  - goblin warleader
+  loot:
+  - common weapons
+  - random bomb
+  - random bomb
+goblin scouts:
+  ennemies:
+  - goblin
+  - goblin
+  loot:
+  - random bomb
+lonely bear:
+  ennemies:
+  - bear
+  loot:
+  - healing potion
+werewolf lair:
+  ennemies:
+  - werewolf
+  loot:
+  - healing potion
+  - healing potion
+  - common weapons
+  - wind scroll
+wolf pack:
+  ennemies:
+  - wolf
+  - wolf
+  - wolf
+  - alpha wolf

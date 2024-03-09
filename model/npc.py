@@ -12,7 +12,7 @@ class NPC(Creature):
     more health.
     """
 
-    RESOURCE_FILE = "./resources/npcs.json"
+    RESOURCE_FILE = "./resources/npcs.yaml"
 
     def __init__(self, name: str, details: dict):
         level = details["level"]

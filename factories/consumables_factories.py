@@ -1,5 +1,5 @@
-import json
 import random
+import yaml
 
 from typing import Dict
 
@@ -50,12 +50,12 @@ class BombFactory(GenericFactory):
 
 
 class ScrollFactory:
-    RESOURCE_FILE = './resources/magic.json'
+    RESOURCE_FILE = './resources/magic.yaml'
     POWER_LEVEL = 4
 
     def __init__(self) -> None:
-        with open(ScrollFactory.RESOURCE_FILE) as f:
-            self.magic_types: Dict[str, str] = json.load(f)
+        with open(ScrollFactory.RESOURCE_FILE, encoding="utf-8") as f:
+            self.magic_types: Dict[str, str] = yaml.safe_load(f)
 
     def from_magic_type(self, magic_type: str):
         name = f'{magic_type} scroll'

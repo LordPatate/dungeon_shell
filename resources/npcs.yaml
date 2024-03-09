@@ -1,0 +1,98 @@
+beasts:
+  alpha wolf:
+    damage: 3
+    health: 5
+    level: 2
+  bear:
+    armor: 1
+    damage: 3
+    level: 4
+  griffin:
+    abilities: flight
+    level: 5
+  wolf:
+    level: 1
+demons:
+  inferno:
+    abilities: magic immunity
+    level: 16
+dragons:
+  dragon:
+    abilities: flight, fire breath, fire immunity, wing beat
+    armor: 4
+    damage: 10
+    health: 66
+    level: 20
+  drake:
+    abilities: flight, fire breath, fire immunity
+    armor: 2
+    damage: 8
+    level: 10
+  whelp:
+    abilities: fire breath, magic immunity
+    level: 3
+goblins:
+  goblin:
+    damage: 4
+    health: 4
+    level: 2
+  goblin warleader:
+    abilities: nearby golbins deal 1 more damage
+    armor: 1
+    damage: 5
+    health: 6
+    level: 3
+humans:
+  adventurer:
+    level: 4
+  bandit:
+    level: 3
+  knight:
+    level: 5
+  legendary hero:
+    level: 10
+  royal instructor:
+    level: 6
+  warlock:
+    level: 7
+monsters:
+  ghoul:
+    damage: 3
+    health: 5
+    level: 2
+  skeleton:
+    level: 1
+  vampire:
+    abilities: bat transformation, life drain, bat swarm summonning
+    damage: 6
+    health: 18
+    level: 7
+  werewolf:
+    abilities: two actions per turn
+    damage: 4
+    level: 6
+  wraith:
+    abilities: mind magic; intangible; vulnerable to heat, light and raw magic
+    damage: 0
+    level: 3
+summonnables:
+  battle angel:
+    abilities: flight, heal (7)
+    damage: 5
+    level: 6
+  elemental:
+    abilities: fire, ice, wind or lightning magic (depending on elemental type)
+    level: 4
+  fairy:
+    abilities: heal (2)
+    health: 1
+    level: 0
+  golem:
+    armor: 3
+    health: 12
+    level: 5
+  imp:
+    abilities: raw magic
+    damage: 5
+    health: 3
+    level: 2
