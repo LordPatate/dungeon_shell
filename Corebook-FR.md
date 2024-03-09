@@ -32,6 +32,14 @@ Pour la difficulté des jets, utilisez ces valeurs comme valeur cible (le jet es
 
 Avec ces règles, le maître de jeu est encouragé à faire plus d'efforts de créativité et d'improvisation pour décrire les conséquences des choix des joueurs.
 
+## Difficulté et nombre de joueurs
+
+Les règles suivantes peuvent être ajustées selon le nombre de joueurs :
+- la récupérations des caractéristiques après chaque combat
+- le niveau ou le nombre des ennemis
+- la quantité de consommables trouvés
+- le support d'un familier, mercenaire ou acolyte non joueur
+
 ## Démarrage
 
 Pour créer un nouveau personnage, le joueur doit choisir :
