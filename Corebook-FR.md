@@ -9,6 +9,29 @@ Les joueurs incarneront un groupe partant à l'aventure en quête de gloire, de 
 Ils ont entendu parler d'un réseau de cavernes infesté de monstres, abritant un repaire de gobelin et servant de refuge à certains brigands.
 C'est un lieu très populaire pour les aventuriers. Il en vient de tous les pays.
 
+## Commentaire sur la complexité des règles
+
+Ce système est adaptable aux envies des joueurs pour être plus ou moins complexe.
+
+Pour des parties plus rapides à démarrer ou pour les joueurs débutants, commencez par sa version la plus simple.
+
+Les règles avancées donneront accès à plus d'options de personnalisation et de progression.
+Elles peuvent aussi rendre l'expérience plus réaliste.
+
+Il est également parfaitement envisageable de commencer une partie avec les règles simples puis d'ajouter les règles avancées au fur et à mesure.
+
+## Règles simplissimes
+
+Les aventuriers peuvent être joués comme des créatures de niveau 4 : ils infligent 4 points de dégâts par coup et ont 12 points de vie.
+
+Pour la difficulté des jets, utilisez ces valeurs comme valeur cible (le jet est réussi si le dé indique une valeur inférieure ou égale à la valeur cible) :
+- si l'action reste dans la zone de confort du personnage: 15
+- si cela fait appel à des compétences secondaires : 11
+- si c'est une tâche difficile : 7
+- s'il a un handicap sérieux : 3
+
+Avec ces règles, le maître de jeu est encouragé à faire plus d'efforts de créativité et d'improvisation pour décrire les conséquences des choix des joueurs.
+
 ## Démarrage
 
 Pour créer un nouveau personnage, le joueur doit choisir :
