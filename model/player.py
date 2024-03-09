@@ -10,7 +10,7 @@ from utils import Container
 
 class PlayerStat(str, Enum):
     STRENGTH = "strength"
-    SPEED = "speed"
+    MOVEMENT = "movement"
     PRECISION = "precision"
     MENTAL = "mental"
 
@@ -19,14 +19,14 @@ class Qualifier:
     _BUFF_AMOUNT = 2
 
     STRONG = 'strong'
-    FAST = 'fast'
+    AGILE = 'agile'
     SHARP = 'sharp'
     SMART = 'smart'
     LUCKY = 'lucky'
 
     corresponding_stat = {
         STRONG: PlayerStat.STRENGTH,
-        FAST: PlayerStat.SPEED,
+        AGILE: PlayerStat.MOVEMENT,
         SHARP: PlayerStat.PRECISION,
         SMART: PlayerStat.MENTAL
     }
@@ -50,7 +50,7 @@ class Player(Creature):
     Starts with 10 health. Considered as a level 4 creature.
     Playable characters have 4 other stats:
     * Strength
-    * Speed
+    * Movement
     * Precision
     * Mental
     A qualifier should be given to them.
@@ -66,7 +66,7 @@ class Player(Creature):
         for stat, value in zip(stat_order, (15, 12, 9, 6)):
             stats[stat] = Stat(value)
         self.strength = stats[PlayerStat.STRENGTH]
-        self.speed = stats[PlayerStat.SPEED]
+        self.movement = stats[PlayerStat.MOVEMENT]
         self.precision = stats[PlayerStat.PRECISION]
         self.mental = stats[PlayerStat.MENTAL]
 
@@ -82,7 +82,7 @@ class Player(Creature):
         self.inventory = Container[Union[Weapon, Equipment, Consumable]]()
 
     def __str__(self) -> str:
-        return f"{self.name} ({self.strength} • {self.speed} • {self.precision} • {self.mental})"
+        return f"{self.name} ({self.strength} • {self.movement} • {self.precision} • {self.mental})"
 
     def details(self) -> str:
         return f'''
@@ -92,7 +92,7 @@ class Player(Creature):
         {f"""Signature move: {self.signature}
         ------------""" if self.signature else ''}
         Strength:  {self.strength}
-        Speed:     {self.speed}
+        Movement:     {self.movement}
         Precision: {self.precision}
         Mental:    {self.mental}
         ------------

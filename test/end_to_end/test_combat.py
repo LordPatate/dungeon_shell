@@ -3,7 +3,7 @@ from model import Player
 
 
 def test_bear_encounter():
-    knight = Player("Lancelot", "strength", "mental", "precision", "speed")
+    knight = Player("Lancelot", "strength", "mental", "precision", "movement")
     sword = weapon_factory.from_name("sword", "starting weapons")
     steel_shield = weapon_factory.from_name("steel shield", "military weapons")
     chainmail = equipment_factory.from_name("chainmail", "military equipment")

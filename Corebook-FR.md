@@ -18,7 +18,7 @@ Pour créer un nouveau personnage, le joueur doit choisir :
 
 ## Caractéristiques
 
-Les personnages joueurs ont 4 caractéristiques : Force, Vitesse, Adresse et Mental.
+Les personnages joueurs ont 4 caractéristiques : Force, Mouvement, Adresse et Mental.
 Parmi ces caractéristiques, ils doivent choisir un ordre dans lequel les classer par importance.
 Elles auront alors comme valeur de base :
 - 15 pour la première
@@ -27,12 +27,12 @@ Elles auront alors comme valeur de base :
 - 3 pour la dernière
 
 Exemples :
-| Archétype | Force | Vitesse | Adresse | Mental |
-| --------- | ----- | ------- | ------- | ------ |
-| Guerrier  | 15    | 11      | 3       | 7      |
-| Assassin  | 11    | 15      | 7       | 3      |
-| Archer    | 3     | 7       | 15      | 11     |
-| Mage      | 7     | 3       | 11      | 15     |
+| Archétype | Force | Mouvement | Adresse | Mental |
+| --------- | ----- | --------- | ------- | ------ |
+| Barbare   | 15    | 11        | 7       | 3      |
+| Assassin  | 3     | 15        | 11      | 7      |
+| Archer    | 3     | 7         | 15      | 11     |
+| Mage      | 7     | 3         | 11      | 15     |
 
 Pour réussir une action donnée, le joueur doit obtenir avec un d20 un score inférieur ou égal au montant de sa caractéristique correspondante.
 Exemple : avec 7 de Force, le joueur doit faire 7 ou moins pour réussir son attaque au corps à corps.
@@ -42,11 +42,11 @@ Mesure la capacité à porter des attaques de mêlée et à encaisser les coups.
 Dépenser 3 point de Force dans une attaque de mêlée augmente ses dégâts de 1.
 Avoir plus de 15 points de Force augmente tous les dégâts de mêlée de 1.
 
-### Vitesse
+### Mouvement
 Mesure la capacité à esquiver, rester dissimulé et réagir aux attaques surprises.
-Dépenser 3 points de Vitesse permet d'effectuer une action de plus ce tour.
-Avoir plus de 15 points de Vitesse confère gratuitement une action de plus par tour.
-Les joueurs peuvent passer leur tour pour récupérer 3 points de Vitesse.
+Dépenser 3 points de Mouvement permet d'effectuer une action de plus ce tour.
+Avoir plus de 15 points de Mouvement confère gratuitement une action de plus par tour.
+Les joueurs peuvent passer leur tour pour récupérer 3 points de Mouvement.
 
 ### Adresse
 Mesure la capacité à utiliser des armes de tir ou de lancer, ainsi qu'à effectuer des parades.
@@ -67,7 +67,7 @@ Par défaut, il apporte un bonus de 3 quand un jet est demandé pour une action 
 
 Qualificatifs de base :
 - fort (+2 Force)
-- vif (+2 Vitesse)
+- vif (+2 Mouvement)
 - adroit (+2 Adresse)
 - malin (+2 Mental)
 - chanceux (1 jeton de chance supplémentaire)
@@ -90,7 +90,7 @@ Un personnage peut porter soit un sac à dos, soit une cape, soit une armure.
 - Le sac à dos permet de transporter une arme supplémentaire et autant de consommables que l'on veut.
 - Une cape banale apporte un bonus de 3 aux jets de furtivité.
 - L'armure légère donne 1 point d'armure ; l'armure lourde 2.
-Chaque point d'amure réduit de 1 les dégâts subits mais réduit Vitesse et Adresse de 1.
+Chaque point d'amure réduit de 1 les dégâts subits mais réduit Mouvement et Adresse de 1.
 
 ### Armes de départ
 Se battre à mains nues inflige 2 dégâts (critique : 4).
@@ -128,7 +128,7 @@ Exemples d'effets magiques pour un sort coûtant X points de Mental :
 
 Lorsqu'un personnage joueur est attaqué, il a principalement trois options défensives : le blocage, l'esquive et la parade.
 - Le blocage est une action de Force.
-- L'esquive est une action de Vitesse.
+- L'esquive est une action de Mouvement.
 - La parade est une action d'Adresse.
 
 ## Critiques

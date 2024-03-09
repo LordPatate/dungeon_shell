@@ -6,7 +6,7 @@
             "effect": "hit a target within melee range"
         },
         "sneak": {
-            "roll": "speed",
+            "roll": "movement",
             "requires": "not being seen",
             "effect": "land a critical hit on a target with any weapon"
         },
@@ -33,7 +33,7 @@
             "effect": "blocks a number of damage that varies with the shield quality"
         },
         "dodge": {
-            "roll": "speed",
+            "roll": "movement",
             "effect": "jump out of the way, nullifying the damage"
         },
         "notice": {
@@ -47,7 +47,7 @@
             "effect": "+1 damage"
         },
         "haste": {
-            "cost": "3 speed",
+            "cost": "3 movement",
             "effect": "one extra action this turn"
         },
         "aim": {
