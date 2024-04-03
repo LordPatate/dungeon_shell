@@ -72,6 +72,8 @@ Exemples :
 Pour réussir une action donnée, le joueur doit obtenir avec un d20 un score inférieur ou égal au montant de sa caractéristique correspondante.
 Exemple : avec 7 de Force, le joueur doit faire 7 ou moins pour réussir son attaque au corps à corps.
 
+C'est toujours le joueur qui lance le dé, que ce soit lui qui attaque ou l'adversaire (le joueur lance alors un dé de défense).
+
 ### Force
 Mesure la capacité à porter des attaques de mêlée et à encaisser les coups.
 Dépenser 3 point de Force dans une attaque de mêlée augmente ses dégâts de 1.
@@ -175,11 +177,17 @@ Un ennemi réalise une attaque critique si le jet défensif de sa cible obtient 
 
 ## PNJ et monstres
 
-Tant que c'est possible, c'est le joueur qui lance le dé, que ce soit lui qui attaque ou l'adversaire (le joueur lance alors un dé de défense).
-
-### 🤓 Niveaux des créatures
+Chaque créature a un niveau associé, représentant sa dangerosité.
+Par défaut, une créature de niveau X inflige X points de dégâts à chaque coup et possède 3*X points de vie.
+Pour un combat équilibré, la somme des niveaux d'un camp devrait être égale à la somme des niveaux du camp opposé. Le côté vainqueur ne devrait l'emporter que d'un cheveu.
 
 Les aventuriers sont considérés comme des créatures de niveau 4.
+
+En début de partie, le maître de jeu est encouragé à opposer aux joueurs des ennemis dont la somme des niveaux vaut au maximum 2*(le nombre de joueurs), de manière à ce que les joueurs aient nettement l'avantage.
+Si les joueurs font face à une menace qui dépasse 4*(le nombre de joueurs), le maître de jeu devrait s'assurer qu'ils sont conscient du danger et que la sagesse les obligeraient à battre en retraite.
+
+### 🤓 Incidence du niveau sur les dés
+
 Tous les jets opposés à une créature sont soumis à un malus ou un bonus selon la différence de niveau entre le personnage joueur et son adversaire.
 Par exemple, si un joueur s'attaque à un bandit de niveau 3, il a +1 sur son jet. S'il s'attaque à un vampire niveau 6, il a -2 sur son jet.
 
