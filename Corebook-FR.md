@@ -142,17 +142,15 @@ Liste des armes de départ et de leurs dégâts (les armes marquées * doivent �
 - *arbalète : 5, critique : 10 ; la recharger prend un tour
 - arbalète légère : 4, critique : 8 ; la recharger prend un tour
 - baguette : réduit le coût des sorts de 2
-- grimoire : la réussite des sorts dépend du maximum de Mental
 
 Les joueurs expérimentés peuvent en suggérer d'autres : luth, bâton, griffes...
 
 ## Sorts
 
 Tous les personnages peuvent utiliser la magie. 
-Pour lancer un sort, le joueur doit réussir un jet basé sur son montant actuel de Mental (ou son maximum s'il utilise un grimoire).
-Après le jet, en cas de réussite, le coût du sort est déduit de la réserve de Mental.
+Pour lancer un sort, le joueur doit réussir un jet de Mental.
 
-Exemples d'effets magiques pour un sort coûtant X points de Mental :
+Exemples d'effets magiques pour un sort de niveau X :
 - énergie : attaque directe infligeant X dégâts à une cible (critique : 2 * X dégâts)
 - soin : rend 2 * X points de vie
 - feu : brûle la cible pour X/2 dégâts pendant 3 tours (critique : X dégâts)
