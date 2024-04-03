@@ -13,22 +13,25 @@ class PlayerStat(str, Enum):
     MOVEMENT = "movement"
     PRECISION = "precision"
     MENTAL = "mental"
+    HEALTH = "health"
 
 
 class Qualifier:
     _BUFF_AMOUNT = 2
 
-    STRONG = 'strong'
-    AGILE = 'agile'
-    SHARP = 'sharp'
-    SMART = 'smart'
-    LUCKY = 'lucky'
+    STRONG = "strong"
+    AGILE = "agile"
+    SHARP = "sharp"
+    SMART = "smart"
+    HEALTHY = "healthy"
+    LUCKY = "lucky"
 
     corresponding_stat = {
         STRONG: PlayerStat.STRENGTH,
         AGILE: PlayerStat.MOVEMENT,
         SHARP: PlayerStat.PRECISION,
-        SMART: PlayerStat.MENTAL
+        SMART: PlayerStat.MENTAL,
+        HEALTHY: PlayerStat.HEALTH,
     }
 
     def __init__(self, name, effect=None):
@@ -59,7 +62,6 @@ class Player(Creature):
     """
     def __init__(self, name: str, *stat_order: Tuple[str, str, str, str]):
         super().__init__(name, level=4)
-        self.heath = Stat(10)
 
         stats: Dict[PlayerStat, Stat] = dict()
         stat_order = map(PlayerStat, stat_order)
@@ -69,6 +71,9 @@ class Player(Creature):
         self.movement = stats[PlayerStat.MOVEMENT]
         self.precision = stats[PlayerStat.PRECISION]
         self.mental = stats[PlayerStat.MENTAL]
+
+        stats[PlayerStat.HEALTH] = Stat(10)
+        self.heath = stats[PlayerStat.HEALTH]
 
         self._qualifier: Optional[Qualifier] = None
         self.expertise: Optional[str] = None
@@ -180,8 +185,8 @@ class Player(Creature):
         if self._qualifier is not None and \
                 self._qualifier.name in Qualifier.corresponding_stat:
             corresponding = Qualifier.corresponding_stat[self._qualifier.name]
-            self.get_stat(corresponding).max -= 2
+            self.get_stat(corresponding).max -= Qualifier._BUFF_AMOUNT
         if value.name in Qualifier.corresponding_stat:
             corresponding = Qualifier.corresponding_stat[value.name]
-            self.get_stat(corresponding).max += 2
+            self.get_stat(corresponding).max += Qualifier._BUFF_AMOUNT
         self._qualifier = value
