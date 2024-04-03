@@ -173,6 +173,16 @@ Ces "chances de critiques" peuvent être augmentées de plusieurs façons, notam
 Une attaque prenant un adversaire par surprise est forcément critique.
 Un ennemi réalise une attaque critique si le jet défensif de sa cible obtient un score de 20.
 
+## PNJ et monstres
+
+Tant que c'est possible, c'est le joueur qui lance le dé, que ce soit lui qui attaque ou l'adversaire (le joueur lance alors un dé de défense).
+
+### 🤓 Niveaux des créatures
+
+Les aventuriers sont considérés comme des créatures de niveau 4.
+Tous les jets opposés à une créature sont soumis à un malus ou un bonus selon la différence de niveau entre le personnage joueur et son adversaire.
+Par exemple, si un joueur s'attaque à un bandit de niveau 3, il a +1 sur son jet. S'il s'attaque à un vampire niveau 6, il a -2 sur son jet.
+
 ## 🤓 Consommables
 
 Les consommables regroupent tous les objets à usage unique comme les potions, les bombes et les parchemins.
