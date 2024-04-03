@@ -23,7 +23,7 @@ Il est également parfaitement envisageable de commencer une partie avec les rè
 
 ## Règles simplissimes
 
-Les aventuriers peuvent être joués comme des créatures de niveau 4 : ils infligent 4 points de dégâts par coup et ont 12 points de vie.
+Chaque personnage joueur inflige 4 points de dégâts par coup (8 en cas de critique), quelle que soit son arme, et possède 10 points de vie.
 
 Pour la difficulté des jets, utilisez ces valeurs comme valeur cible (le jet est réussi si le dé indique une valeur inférieure ou égale à la valeur cible) :
 - si l'action reste dans la zone de confort du personnage: 15
@@ -107,6 +107,7 @@ Qualificatifs de base :
 - vif (+2 Mouvement)
 - adroit (+2 Adresse)
 - malin (+2 Mental)
+- robuste (+2 points de vie)
 - chanceux (1 jeton de chance supplémentaire)
 
 Qualificatifs spéciaux :
@@ -153,7 +154,7 @@ Après le jet, en cas de réussite, le coût du sort est déduit de la réserve 
 
 Exemples d'effets magiques pour un sort coûtant X points de Mental :
 - énergie : attaque directe infligeant X dégâts à une cible (critique : 2 * X dégâts)
-- soin : rend 2 * X points de Force (critique : dans toutes les caractéristiques)
+- soin : rend 2 * X points de vie
 - feu : brûle la cible pour X/2 dégâts pendant 3 tours (critique : X dégâts)
 - gel : immobilise une de niveau inférieur ou égal à X (critique : inflige X dégâts en plus)
 - vent : repousse tous les personnages de niveau inférieur ou égal à X (critique : inflige X dégâts à l'impact)
@@ -196,7 +197,7 @@ Par exemple, si un joueur s'attaque à un bandit de niveau 3, il a +1 sur son je
 Les consommables regroupent tous les objets à usage unique comme les potions, les bombes et les parchemins.
 Chaque personnage ne peut en principe transporter qu'un consommable, mais on en trouve pratiquement partout.
 Il peut exister des consommables de toutes sortes avec des effets variés.
-Une potion rend entre 6 points d'une certaine caractéristique définie.
+Une potion de soin rend entre 6 et 9 points de vie (5+1d4) points de vie.
 Une explosion ordinaire cause
 - entre 7 et 10 dégâts (6 + 1d4) si la cible est atteinte de plein fouet,
 - entre 3 et 6 (2 + 1d4) si elle est proche du centre,
@@ -213,11 +214,7 @@ La créature peut être congédiée puis ré-invoquée à volonté tant qu'elle 
 
 Chaque combat rapporte 10 or +5 par niveau de profondeur.
 
-🤓 De plus, un joueur doit lancer deux d4. Le résultat du premier indique le type d'objet trouvé et le deuxième indique sa qualité.
-1. Potion de soin
-2. Potion de mana
-3. Bombe ordinaire
-4. Parchemin (feu / glace / vent / foudre)
+🤓 De plus, les joueurs peuvent tirer au hasard un consommable.
 
 Exception après avoir vaincu un boss :
 - 100 or
